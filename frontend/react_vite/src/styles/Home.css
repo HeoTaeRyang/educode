@@ -1,0 +1,55 @@
+/* src/components/Home.css */
+.home-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #282c34;
+    color: white;
+}
+
+.logo {
+    font-size: 1.5rem;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.auth-buttons a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid white;
+    border-radius: 4px;
+}
+
+.auth-buttons a:hover {
+    background-color: white;
+    color: #282c34;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+main h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+main p {
+    font-size: 1.2rem;
+}
