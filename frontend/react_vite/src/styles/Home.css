@@ -1,55 +1,483 @@
-/* src/components/Home.css */
-.home-page {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-}
+/* src/style.css */
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background-color: #282c34;
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: #333;
+  }
+  
+  .app {
+    max-width: 1469px;
+    margin: 0 auto;
+  }
+  
+  .header {
+    background-color: #4CAF50;
     color: white;
-}
-
-.logo {
-    font-size: 1.5rem;
-}
-
-.auth-buttons {
-    display: flex;
-    gap: 1rem;
-}
-
-.auth-buttons a {
-    color: white;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border: 1px solid white;
-    border-radius: 4px;
-}
-
-.auth-buttons a:hover {
-    background-color: white;
-    color: #282c34;
-}
-
-main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    padding: 20px;
     text-align: center;
-}
+  }
+  
+  .navbar ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    background-color: #333;
+    padding: 10px 0;
+  }
+  
+  .navbar li {
+    color: white;
+    cursor: pointer;
+  }
+  
+  .navbar li:hover {
+    text-decoration: underline;
+  }
+  
+  .content {
+    padding: 20px;
+    text-align: center;
+  }
 
-main h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
+  .rectangle-23785 {
+    background: #ffffff; /* 흰색 */
+    height: 900px;
+    position: relative;
+    margin-top: 20px; /* 위쪽 요소와 간격 */
+  }
+  
+  .nav-bar-top,
+  .nav-bar-top * {
+    box-sizing: border-box;
+  }
+  .nav-bar-top {
+    background: rgba(255, 255, 255, 0);
+    border-style: solid;
+    border-color: #486284;
+    border-width: 1px;
+    height: 101px;
+    position: relative;
+    overflow: hidden;
+  }
 
-main p {
-    font-size: 1.2rem;
-}
+
+  .group-32 {
+    position: absolute;
+    inset: 0;
+  }
+  
+  .logos {
+    color: var(--black, #1a202c);
+    text-align: left;
+    font-family: "PlusJakartaSans-SemiBold", sans-serif;
+    font-size: 36px;
+    line-height: 150%;
+    letter-spacing: -0.03em;
+    font-weight: 600;
+    position: absolute;
+    left: 50px;
+    top: 20px;
+    width: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+
+  .home {
+    color: var(--black, #1a202c);
+    text-align: left;
+    font-family: "PlusJakartaSans-SemiBold", sans-serif;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: -0.03em;
+    font-weight: 600;
+    position: absolute;
+    left: 467px;
+    top: 40px;
+    width: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .ai1 {
+    color: #486284;
+    text-align: center;
+    font-family: "PlusJakartaSans-Medium", sans-serif;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: -0.03em;
+    font-weight: 500;
+    opacity: 0.9;
+    position: absolute;
+    left: 551.16px;
+    top: 40px;
+    width: 87.88px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .div {
+    color: #486284;
+    text-align: center;
+    font-family: "PlusJakartaSans-Medium", sans-serif;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: -0.03em;
+    font-weight: 500;
+    opacity: 0.9;
+    position: absolute;
+    left: 677.2px;
+    top: 40px;
+    width: 99.24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .div2 {
+    color: #486284;
+    text-align: center;
+    font-family: "PlusJakartaSans-Medium", sans-serif;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: -0.03em;
+    font-weight: 500;
+    opacity: 0.9;
+    position: absolute;
+    left: 814.6px;
+    top: 40px;
+    width: 113.96px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .div3 {
+    color: #486284;
+    text-align: center;
+    font-family: "PlusJakartaSans-Medium", sans-serif;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: -0.03em;
+    font-weight: 500;
+    opacity: 0.9;
+    position: absolute;
+    left: 942px;
+    top: 40px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+    
+  .line-3 {
+    margin-top: -1px;
+    border-style: solid;
+    border-color: #486284;
+    border-width: 1px 0 0 0;
+    opacity: 0.8;
+    width: 21px;
+    height: 0px;
+    position: absolute;
+    left: 1206.25px;
+    top: 43.5px;
+    transform-origin: 0 0;
+    transform: rotate(90deg) scale(1, 1);
+  }
+  .line-4 {
+    margin-top: -1px;
+    border-style: solid;
+    border-color: #486284;
+    border-width: 1px 0 0 0;
+    opacity: 0.8;
+    width: 21px;
+    height: 0px;
+    position: absolute;
+    left: 1206.25px;
+    top: 43.5px;
+    transform-origin: 0 0;
+    transform: rotate(90deg) scale(1, 1);
+  }
+  .registerbox {
+    background: #486284;
+    border-radius: 4px;
+    width: 82px;
+    height: 38px;
+    position: absolute;
+    left: 1312.5px;
+    top: 35px;
+  }
+  .login {
+    color: #ffffff;
+    text-align: left;
+    font-family: "PlusJakartaSans-Medium", sans-serif;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: -0.03em;
+    font-weight: 500;
+    position: absolute;
+    left: 1300px;
+    top: 41.5px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .register {
+    color: #486284;
+    text-align: left;
+    font-family: "PlusJakartaSans-Medium", sans-serif;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: -0.03em;
+    font-weight: 500;
+    text-decoration: underline;
+    opacity: 0.75;
+    position: absolute;
+    left: 1224.24px;
+    top: 41.5px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .button-rent {
+    background: #ffffff;
+    border-radius: 15px;
+    border-style: solid;
+    border-color: #000000;
+    border-width: 1px;
+    padding: 0px 20px 0px 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    width: 118px;
+    height: 55px;
+    position: absolute;
+    left: 1061px;
+    top: 23px;
+  }
+  .moon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    left: 20%;
+    position: relative;
+    overflow: visible;
+  }
+  .line-32 {
+    opacity: 0.8;
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    overflow: visible;
+  }
+  .sun {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    right: 20%;
+    position: relative;
+    overflow: visible;
+  }
+  /* 헤드 이미지 영역*/
+
+  .mainbox {
+    background: #ced7e4; /* 연한 파란색 */
+    height: 833px;
+    position: relative;
+    overflow: hidden; /* 이미지가 부모 요소를 넘어가지 않도록 설정 */
+  }
+
+  .main {
+    height: 200px;
+    position: absolute;
+    left: 167.2px;
+    top: 239px;
+    overflow: visible;
+  }
+
+  .mainbox img {
+    position: relative;
+    top: 15%;   
+    left: 10%;  
+    height: auto;
+  }
+
+  .edu-code,
+  .edu-code * {
+    box-sizing: border-box;
+  }
+  .edu-code {
+    color: #0b132a;
+    text-align: left;
+    font-family: "Rubik-Bold", sans-serif;
+    font-size: 48px;
+    line-height: 32.89px;
+    font-weight: 700;
+    position: relative;
+    width: 312px;
+    height: 253px;
+    top: 0px;   
+    left: 870px;  
+  }
+  
+  .maintextbox0,
+  .maintextbox0 * {
+  box-sizing: border-box;
+  }
+  .maintextbox0 {
+  position: relative;
+  }
+  .maintextbox1 {
+  width: 407px;
+  height: 82px;
+  position: static;
+  }
+  .ai0 {
+    color: var(--black, #1a202c);
+    text-align: left;
+    font-family: "PlusJakartaSans-Medium", sans-serif;
+    font-size: 20px;
+    line-height: 121.2%;
+    font-weight: 500;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 407px;
+    height: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    top: -205px;   /* 부모 요소 높이의 10% 만큼 아래로 이동 */
+    left: 880px;  /* 부모 요소 너비의 20% 만큼 오른쪽으로 이동 */
+  }
+
+  /* footer 영역 */
+
+  .footer,
+  .footer * {
+    box-sizing: border-box;
+  }
+  .footer {
+    background: #d3dce7;
+    height: 480px;
+    position: relative;
+    overflow: hidden;
+  }
+  ._2024-edu-code-all-rights-reserved {
+    color: var(--black, #1a202c);
+    text-align: left;
+    font-family: var(
+      --semibold-type16-font-family,
+      "PlusJakartaSans-SemiBold",
+      sans-serif
+    );
+    font-size: var(--semibold-type16-font-size, 16px);
+    line-height: var(--semibold-type16-line-height, 150%);
+    letter-spacing: var(--semibold-type16-letter-spacing, -0.02em);
+    font-weight: var(--semibold-type16-font-weight, 600);
+    position: absolute;
+    left: 60px;
+    top: 396.82px;
+    width: 328px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .line {
+    margin-top: -1px;
+    border-style: solid;
+    border-color: rgba(72, 98, 132, 0.16);
+    border-width: 1px 0 0 0;
+    width: 1320px;
+    height: 0px;
+    position: absolute;
+    left: 1380px;
+    top: 360px;
+    transform-origin: 0 0;
+    transform: rotate(-180deg) scale(1, 1);
+  }
+  .logo {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    left: 60px;
+    top: 160.86px;
+  }
+  .our-vision-is-to-provide-convenience-and-help-you {
+    color: var(--black, #1a202c);
+    text-align: left;
+    font-family: var(
+      --medium-type16-font-family,
+      "PlusJakartaSans-Medium",
+      sans-serif
+    );
+    font-size: var(--medium-type16-font-size, 16px);
+    line-height: var(--medium-type16-line-height, 150%);
+    letter-spacing: var(--medium-type16-letter-spacing, -0.02em);
+    font-weight: var(--medium-type16-font-weight, 500);
+    position: relative;
+    width: 292px;
+  }
+  .group-1304 {
+    position: absolute;
+    inset: 0;
+  }
+  .group-1303 {
+    width: 174.16px;
+    height: 44px;
+    position: static;
+  }
+  .logo2 {
+    color: var(--black, #1a202c);
+    text-align: left;
+    font-family: "PlusJakartaSans-SemiBold", sans-serif;
+    font-size: 32px;
+    line-height: 150%;
+    letter-spacing: -0.03em;
+    font-weight: 600;
+    position: absolute;
+    left: 60px;
+    top: 111.82px;
+    width: 174.16px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .socmed-facebook {
+    height: auto;
+    position: absolute;
+    left: 60px;
+    top: 239px;
+    overflow: visible;
+  }
+  .socmed-twitter {
+    height: auto;
+    position: absolute;
+    left: 113.6px;
+    top: 239px;
+    overflow: visible;
+  }
+  .socmed-instagram {
+    height: auto;
+    position: absolute;
+    left: 167.2px;
+    top: 239px;
+    overflow: visible;
+  }
+  
