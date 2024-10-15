@@ -1,0 +1,89 @@
+/* 전체 컨테이너: flex를 사용해 중앙 정렬 */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* 화면 전체 높이 */
+    padding: 0 50px;
+    /* 좌우 패딩 */
+}
+
+/* 로그인 박스 (폼) */
+.login-box {
+    width: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    text-align: center;
+    /* 로그인 글자를 포함한 모든 텍스트 중앙 정렬 */
+    margin-right: 50px;
+    /* 이미지와 폼 간격 조정 */
+}
+
+/* 폼 내부 스타일링 */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+    text-align: left;
+}
+
+input {
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px;
+    background-color: #CED7E4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #94abcc;
+}
+
+/* 중앙 텍스트 */
+h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+    /* 로그인 텍스트 중앙 정렬 */
+}
+
+/* 로그인 이미지 */
+.login-image img {
+    max-width: 500px;
+    /* 이미지 크기를 키움 */
+    height: auto;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .login-container {
+        flex-direction: column;
+        /* 작은 화면에서는 세로 정렬 */
+    }
+
+    .login-box {
+        margin-right: 0;
+        margin-bottom: 20px;
+        /* 로그인 폼과 이미지 간의 간격 */
+    }
+
+    .login-image {
+        display: none;
+        /* 작은 화면에서는 이미지 숨김 */
+    }
+}

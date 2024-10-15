@@ -1,0 +1,91 @@
+.register-container {
+    display: flex;
+    justify-content: space-between;
+    /* 공간을 고르게 분배 */
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* 화면 중앙에 정렬 */
+}
+
+.register-image {
+    flex: 0.6;
+    /* 이미지가 폼보다 조금 더 큰 비율 */
+    display: flex;
+    justify-content: flex-end;
+    /* 이미지가 왼쪽으로 너무 치우치지 않도록 */
+    align-items: center;
+    padding-right: 40px;
+    /* 폼과 이미지 사이의 간격 */
+}
+
+.register-image img {
+    max-width: 80%;
+    /* 이미지가 너무 커지지 않도록 설정 */
+    height: auto;
+}
+
+.register-box {
+    flex: 0.4;
+    /* 폼이 이미지보다 조금 작게 */
+    max-width: 400px;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+}
+
+input {
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px;
+    background-color: #94abcc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #CED7E4;
+}
+
+p {
+    text-align: center;
+}
+
+/* 작은 화면일 때 (반응형) */
+@media (max-width: 768px) {
+    .register-container {
+        flex-direction: column;
+    }
+
+    .register-image {
+        display: none;
+    }
+
+    .register-box {
+        width: 100%;
+        max-width: none;
+        box-shadow: none;
+        border: none;
+    }
+}
