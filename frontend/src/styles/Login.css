@@ -14,7 +14,7 @@
     width: 300px;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
     background-color: white;
     text-align: center;
     /* 로그인 글자를 포함한 모든 텍스트 중앙 정렬 */
@@ -46,13 +46,26 @@ button {
     background-color: #CED7E4;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 15px;
     cursor: pointer;
 }
 
 button:hover {
     background-color: #94abcc;
 }
+
+a {
+    text-decoration: none;
+    /* 밑줄 제거 */
+    color: inherit;
+    /* 링크의 기본 텍스트 색상을 유지 */
+}
+
+a:hover {
+    text-decoration: underline;
+    /* 마우스를 올리면 밑줄이 생기게 설정 (선택 사항) */
+}
+
 
 /* 중앙 텍스트 */
 h2 {

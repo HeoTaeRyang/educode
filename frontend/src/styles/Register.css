@@ -32,9 +32,9 @@
     /* 폼이 이미지보다 조금 작게 */
     max-width: 400px;
     padding: 30px;
-    border: 1px solid #ddd;
+    /*border: 1px solid #ddd;*/
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
     background-color: white;
 }
 
@@ -52,7 +52,7 @@ input {
     margin-top: 5px;
     margin-bottom: 15px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 15px;
 }
 
 button {
@@ -60,8 +60,10 @@ button {
     background-color: #94abcc;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 15px;
     cursor: pointer;
+    margin-bottom: 10px;
+    /* 여백 */
 }
 
 button:hover {
@@ -73,7 +75,7 @@ p {
 }
 
 /* 작은 화면일 때 (반응형) */
-@media (max-width: 768px) {
+@media (max-width: 800px) {
     .register-container {
         flex-direction: column;
     }
