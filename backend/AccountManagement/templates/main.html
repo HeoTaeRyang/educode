@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to the Main Page</h1>
+
+    {% if userid %}
+        <p>로그인된 사용자: <strong>{{ userid }}</strong></p>
+        <form action="/logout" method="POST">
+            <button type="submit" class="button">로그아웃</button>
+        </form>
+    {% else %}
+        <p>로그인되지 않았습니다.</p>
+        <a href="/login"><button class="button">로그인</button></a>
+        <a href="/register"><button class="button">회원가입</button></a>
+    {% endif %}
+
+</body>
+</html>

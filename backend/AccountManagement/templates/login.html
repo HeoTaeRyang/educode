@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        .container {
+            width: 300px;
+            margin: 0 auto;
+        }
+        h2 {
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label, input {
+            margin-bottom: 10px;
+        }
+        input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .error-message {
+            color: red;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>로그인</h2>
+        <form id="loginForm">
+            <label for="userid">아이디</label>
+            <input type="text" id="userid" name="userid" required>
+            
+            <label for="password">비밀번호</label>
+            <input type="password" id="password" name="password" required>
+            
+            <button type="submit">로그인</button>
+        </form>
+        
+        <div class="error-message" id="errorMessage"></div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            const userid = document.getElementById('userid').value;
+            const password = document.getElementById('password').value;
+            
+            const response = await fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    userid: userid,
+                    password: password
+                })
+            });
+            
+            const result = await response.json();
+            
+            if (!result.success) {
+                document.getElementById('errorMessage').textContent = result.message;
+            } else {
+                document.getElementById('errorMessage').textContent = '';
+                alert('로그인에 성공했습니다!');
+                window.location.href = '/';
+            }
+        });
+    </script>
+</body>
+</html>
