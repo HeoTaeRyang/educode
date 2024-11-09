@@ -14,7 +14,7 @@
     width: 300px;
     padding: 20px;
     border-radius: 10px;
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
     background-color: white;
     text-align: center;
     /* 로그인 글자를 포함한 모든 텍스트 중앙 정렬 */
@@ -39,8 +39,12 @@ input {
     margin-bottom: 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
+/* 버튼 스타일링 */
 button {
     padding: 10px;
     background-color: #CED7E4;
@@ -54,6 +58,7 @@ button:hover {
     background-color: #94abcc;
 }
 
+/* 링크 스타일링 */
 a {
     text-decoration: none;
     /* 밑줄 제거 */
@@ -65,7 +70,6 @@ a:hover {
     text-decoration: underline;
     /* 마우스를 올리면 밑줄이 생기게 설정 (선택 사항) */
 }
-
 
 /* 중앙 텍스트 */
 h2 {
@@ -99,4 +103,12 @@ h2 {
         display: none;
         /* 작은 화면에서는 이미지 숨김 */
     }
+}
+
+/* 오류 메시지 스타일 */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: left;
 }

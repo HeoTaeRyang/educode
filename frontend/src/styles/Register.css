@@ -1,3 +1,6 @@
+/* Register.css */
+
+/* 전체 폼 컨테이너 */
 .register-container {
     display: flex;
     justify-content: space-between;
@@ -10,6 +13,7 @@
     /* 화면 중앙에 정렬 */
 }
 
+/* 이미지 영역 */
 .register-image {
     flex: 0.6;
     /* 이미지가 폼보다 조금 더 큰 비율 */
@@ -21,40 +25,56 @@
     /* 폼과 이미지 사이의 간격 */
 }
 
+/* 이미지 크기 조정 */
 .register-image img {
     max-width: 80%;
     /* 이미지가 너무 커지지 않도록 설정 */
     height: auto;
 }
 
+/* 폼 영역 */
 .register-box {
     flex: 0.4;
     /* 폼이 이미지보다 조금 작게 */
     max-width: 400px;
+    width: 100%;
+    /* 폼 영역은 항상 100% 너비를 차지 */
     padding: 30px;
-    /*border: 1px solid #ddd;*/
     border-radius: 10px;
-    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
     background-color: white;
+
 }
 
+/* 폼 요소들의 세로 배치 */
 form {
     display: flex;
     flex-direction: column;
+    /* 폼 항목 세로로 배치 */
 }
 
+/* 라벨 스타일 */
 label {
     margin-top: 10px;
+    font-weight: bold;
+    display: block;
+    /* 라벨을 블록 요소로 만들어서 아래로 배치 */
 }
 
+/* 입력 필드 스타일 */
 input {
     padding: 10px;
     margin-top: 5px;
     margin-bottom: 15px;
     border: 1px solid #ddd;
     border-radius: 15px;
+    font-size: 16px;
+    width: 100%;
+    /* 입력 필드는 항상 100% 너비로 설정 */
+    box-sizing: border-box;
+    /* 패딩을 포함한 크기 계산 */
 }
 
+/* 버튼 스타일 */
 button {
     padding: 10px;
     background-color: #94abcc;
@@ -63,31 +83,54 @@ button {
     border-radius: 15px;
     cursor: pointer;
     margin-bottom: 10px;
-    /* 여백 */
+    width: 100%;
+    /* 버튼도 100% 너비를 차지 */
 }
 
 button:hover {
     background-color: #CED7E4;
 }
 
+/* 로그인 링크 스타일 */
 p {
     text-align: center;
 }
 
-/* 작은 화면일 때 (반응형) */
+/* 작은 화면일 때 (반응형 디자인) */
 @media (max-width: 800px) {
     .register-container {
         flex-direction: column;
+        /* 세로로 배치 */
     }
 
     .register-image {
         display: none;
+        /* 작은 화면에서는 이미지 숨기기 */
     }
 
     .register-box {
         width: 100%;
+        /* 폼이 전체 화면을 차지 */
         max-width: none;
         box-shadow: none;
         border: none;
     }
+}
+
+/* 오류 메시지 스타일 */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    text-align: left;
+}
+
+/* 입력값이 잘못된 경우, 오류 메시지 스타일을 보여줍니다. */
+.error-message.show {
+    display: block;
+}
+
+/* 오류가 없으면 숨기기 */
+.error-message.hide {
+    display: none;
 }
