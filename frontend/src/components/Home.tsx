@@ -12,7 +12,7 @@ const Home: React.FC = () => {
             <div className="logos">EduCode</div>
 
             <div className="home">Home</div>
-            <div className="ai1">AI 질문</div>
+            <div className="ai1"><Link to="/Aiask" className="btn-register">AI 질문</Link></div>
             <div className="div">자유 게시판</div>
             <div className="div2">구인 게시판</div>
             <div className="div3">게임</div>
