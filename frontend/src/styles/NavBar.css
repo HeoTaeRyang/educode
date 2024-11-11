@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+.navbar {
+  display: flex;
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
+  height: 100px; /* 네비게이션 바 높이 */
+  background-color: #ffffff; /* 네비게이션 바 배경 색 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 */
+  position: relative;
+  
+}
+.nav-bar-top,
+  .nav-bar-top * {
+    box-sizing: border-box;
+  }
+
+.navbar a {
+    text-decoration: none;
+    color: inherit; /* 부모의 색상을 따르게 설정 */
+}
+
+.nav-bar-top {
+    background: rgba(255, 255, 255, 0);
+    border-style: solid;
+    border-color: #486284;
+    border-width: 0px;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+  }
+
+.logos {
+    color: var(--black, #1a202c);
+    font-family: "PlusJakartaSans-SemiBold", sans-serif;
+    font-size: 36px;
+    line-height: 150%;
+    letter-spacing: -0.03em;
+    font-weight: 600;
+    position: absolute;
+    margin-top: 0px;
+    margin-right: 85vw;
+    width: 46px;
+
+  }
+
+.nav-con {
+    display: flex;             /* 자식 요소들을 가로로 배치 */
+    justify-content: space-around; /* 간격을 고르게 배치 */
+    padding: 0 0px;
+    width : 40vw;
+    margin-top : 40px;
+    margin-left : 0px;
+  
+  }
+
+
+.navbt0, .navbt1, .navbt2, .navbt3, .navbt4{
+    color: #486284;
+    text-align: center;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: -0.03em;
+    font-weight: 500;
+    position: relative;
+  }
+
+.register, .login {
+    color: #486284;
+    text-align: center;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: -0.03em;
+    font-weight: 500;
+    position: relative;
+  }
+
+
+
+  .button-rent {
+    background: #ffffff;
+    border-radius: 15px;
+    border-style: solid;
+    border-color: #000000;
+    border-width: 1px;
+    padding: 0px 20px 0px 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    width: 118px;
+    height: 55px;
+    position: absolute;
+    left: 1450px;
+    top: 23px;
+  }
+  .moon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    left: 20%;
+    position: relative;
+    overflow: visible;
+  }
+  .line-32 {
+    opacity: 0.8;
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    overflow: visible;
+  }
+  .sun {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    right: 20%;
+    position: relative;
+    overflow: visible;
+  }
+  .line-3 {
+    margin-top: -1px;
+    border-style: solid;
+    border-color: #486284;
+    border-width: 1px 0 0 0;
+    opacity: 0.8;
+    width: 21px;
+    height: 0px;
+    position: absolute;
+    left: 1650px;
+    top: 43.5px;
+    transform-origin: 0 0;
+    transform: rotate(90deg) scale(1, 1);
+  }
+  .line-4 {
+    margin-top: -1px;
+    border-style: solid;
+    border-color: #486284;
+    border-width: 1px 0 0 0;
+    opacity: 0.8;
+    width: 21px;
+    height: 0px;
+    position: absolute;
+    left: 1206.25px;
+    top: 43.5px;
+    transform-origin: 0 0;
+    transform: rotate(90deg) scale(1, 1);
+  }
