@@ -1,21 +1,28 @@
-import openai
+from openai import OpenAI
 import os
+from getpass import getpass
 
-openai_api_key = os.getenv('OPENAI_API_KEY')
+# API 키를 환경 변수에 저장
+# os.environ['OPENAI_API_KEY'] = "API키 입력"
 
-def ask_chatgpt(question):
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",  # 사용할 모델 지정 (예: gpt-4)
-        messages=[
-            {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": question}
+def create_chat_completion(user_input):
+    system_input = "넌 프로그래밍 전문 강사아. 프로그래밍에 관련된 질문에만 친절하고 간략하게 답변해줘"
+    model="gpt-4o-mini"
+    temperature=1.15
+    max_tokens=500
+    
+    try:
+        messages = [
+            {"role": "system", "content": system_input},
+            {"role": "user", "content": user_input}
         ]
-    )
 
-    answer = response['choices'][0]['message']['content']
-    return answer
-
-if __name__ == "__main__":
-    user_question = input("질문을 입력하세요: ")
-    answer = ask_chatgpt(user_question)
-    print("ChatGPT의 답변:", answer)
+        response = OpenAI().chat.completions.create(
+            model=model,
+            messages=messages,
+            temperature=temperature,
+        )
+        
+        return response
+    except Exception as e:
+        return f"Error: {str(e)}"
