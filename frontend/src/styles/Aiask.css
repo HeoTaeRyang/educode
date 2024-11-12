@@ -84,6 +84,34 @@
     position: relative;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
+/* 답변 글 입력되는 창 */
+.answer-box {
+  margin-top: 33px;
+  background: #ffffff;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #979797;
+  border-width: 1px;
+  width: 800px;
+  height: 950px;
+  position: relative;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); 
+}
+/* 답변 입력되는 텍스트 출력부분 */
+.answer-text {
+  padding: 10px;
+  width: 100%; /* 부모 박스를 꽉 채움 */
+  height: auto; /* 텍스트 내용에 맞게 높이 자동 조정 */
+  border: none;
+  outline: none;
+  font-size: 20px;
+  box-sizing: border-box;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  resize: none;
+  overflow-y: auto;
+  border-radius: 20px;
+}
 
 /* 본문 입력하는 텍스트 입력부분 */
 .ask-text-input {

@@ -36,6 +36,7 @@ const Aiask: React.FC = () => {
             );
 
             setResponseText(response.data.answer);  // 백엔드에서 가공된 문자열 받기
+
             console.log(response.data.answer);       // 콘솔에 출력
             
         } catch (error) {
@@ -78,6 +79,12 @@ const Aiask: React.FC = () => {
                     onChange={handleContentChange}
                     className="ask-text-input"
                     placeholder="ㅡ"
+                />
+            </div>
+            <div className="answer-box">
+                <textarea
+                    value={responseText}
+                    className="answer-text"
                 />
             </div>
             <button type="button" onClick={handleSubmit} className="ask-button">
