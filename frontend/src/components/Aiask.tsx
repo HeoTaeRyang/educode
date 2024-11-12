@@ -36,6 +36,7 @@ const Aiask: React.FC = () => {
             );
 
             setResponseText(response.data.answer);  // 백엔드에서 가공된 문자열 받기
+            console.log(response.data.answer);       // 콘솔에 출력
             
         } catch (error) {
             if (error.response) {
@@ -49,8 +50,6 @@ const Aiask: React.FC = () => {
                 console.error('Error:', error.message);
             }
         }
-
-        console.log(responseText);       // 콘솔에 출력
 
         // 필요 시 입력 필드 초기화
         // setTitle('');
