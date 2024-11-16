@@ -15,6 +15,9 @@ def home():
 
 @app.route('/login', methods=['POST'])
 def login():
+    data = request.json
+    print(f"Received login data: {data}")  # 로그인 요청 데이터 출력
+    
     user_id = request.json.get('id')
     password = request.json.get('password')
 
@@ -35,6 +38,8 @@ def register():
     username = request.json.get('username')
     email = request.json.get('email')
     password = request.json.get('password')
+
+    print(f"Received data: user_id={user_id}, username={username}, email={email}, password={password}")
 
     # 사용자 중복 확인
     if user_id in users_db:

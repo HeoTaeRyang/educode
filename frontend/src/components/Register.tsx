@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/Register.css'; // styles 폴더 안의 Register.css를 불러옴
+import axios from 'axios';
+import '../styles/Register.css'; // 스타일 파일 불러오기
+
+// 응답 데이터 타입 정의
+interface RegisterResponse {
+    success: boolean;
+    message?: string;
+}
 
 const Register: React.FC = () => {
     // 입력 필드 상태
@@ -53,16 +60,50 @@ const Register: React.FC = () => {
         validate(field, value);
     };
 
+    const [responseMessage, setResponseMessage] = useState('');
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        // 서버 요청 로직 (여기서는 예시)
         // 폼 제출 시 검증
-        if (Object.keys(errors).length > 0) {
+        const hasErrors = Object.values(errors).some((error) => error !== '');
+        if (hasErrors) {
+            setResponseMessage('입력값을 다시 확인해주세요.');
             return; // 오류가 있으면 제출하지 않음
         }
 
-        // 백엔드에 데이터 전송 (fetch 요청 등)
+        try {
+            const requestData = {
+                id: userId,
+                username,
+                email,
+                password,
+            };
+
+            setResponseMessage('회원가입 진행 중...');
+
+            // 백엔드로 데이터 전송 (응답 타입 명시)
+            const response = await axios.post<RegisterResponse>(
+                'http://localhost:5000/register', // 백엔드 엔드포인트
+                requestData,
+                { headers: { 'Content-Type': 'application/json' } }
+            );
+
+            // response.data를 RegisterResponse 타입으로 안전하게 사용
+            if (response.data.success) {
+                setResponseMessage('회원가입이 성공적으로 완료되었습니다!');
+                // 회원가입 후 입력값 초기화
+                setUserId('');
+                setUsername('');
+                setEmail('');
+                setPassword('');
+            } else {
+                setResponseMessage(response.data.message || '회원가입에 실패했습니다.');
+            }
+        } catch (error) {
+            setResponseMessage('서버와의 통신 중 오류가 발생했습니다.');
+            console.error(error);
+        }
     };
 
     return (
@@ -123,6 +164,9 @@ const Register: React.FC = () => {
 
                     <button type="submit" className="register-button">Register</button>
                 </form>
+
+                {responseMessage && <div className="response-message">{responseMessage}</div>}
+
                 <p>
                     <Link to="/login">Login</Link>
                 </p>

@@ -10,6 +10,7 @@ const Login: React.FC = () => {
         password: '',
     });
 
+    // 입력값 검증 함수
     const validateForm = () => {
         const newErrors = { id: '', password: '' };
 
@@ -21,6 +22,7 @@ const Login: React.FC = () => {
         return !newErrors.id && !newErrors.password;
     };
 
+    // 로그인 요청을 처리하는 함수
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -47,10 +49,17 @@ const Login: React.FC = () => {
             // 로그인 후 페이지 이동 또는 다른 처리
         } else {
             // 서버에서 오는 오류 메시지 처리
-            setErrors({
-                id: data.error || '',
-                password: data.error || '',
-            });
+            if (data.error.includes('아이디')) {
+                setErrors({
+                    id: data.error,  // 아이디 오류만 설정
+                    password: '',     // 비밀번호 오류는 초기화
+                });
+            } else if (data.error.includes('비밀번호')) {
+                setErrors({
+                    id: '',           // 아이디 오류는 초기화
+                    password: data.error,  // 비밀번호 오류만 설정
+                });
+            }
         }
     };
 
@@ -67,7 +76,7 @@ const Login: React.FC = () => {
                         value={id}
                         onChange={(e) => setId(e.target.value)}
                     />
-                    {errors.id && <p className="error-message">{errors.id}</p>}
+                    {errors.id && <p className="error-message">{errors.id}</p>}  {/* 아이디 오류 메시지 */}
 
                     <label htmlFor="password">Password:</label>
                     <input
@@ -77,7 +86,7 @@ const Login: React.FC = () => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
-                    {errors.password && <p className="error-message">{errors.password}</p>}
+                    {errors.password && <p className="error-message">{errors.password}</p>}  {/* 비밀번호 오류 메시지 */}
 
                     <button type="submit" className="login-button">Login</button>
                 </form>
