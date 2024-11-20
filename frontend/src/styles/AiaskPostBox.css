@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+.aiask-post-box {
+    margin-bottom: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #000000;
+    border-width: 1px;
+    height: 165px;
+    width: 710px;
+    position: relative;
+  }
+
+ 
+  .aiask-post-user {
+    color: #787878;
+    text-align: left;
+    font-family: "Roboto-Regular", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    position: absolute;
+    left: 18px;
+    top: 137px;
+    width: 300px;
+    height: 13px;
+  }
+
+  .aiask-post-time {
+    color: #787878;
+    text-align: left;
+    font-family: "Roboto-Regular", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    position: absolute;
+    left: 68px;
+    top: 137px;
+    width: 300px;
+    height: 13px;
+  }
+  .aiask-post-watch {
+    color: #787878;
+    text-align: left;
+    font-family: "Roboto-Regular", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    position: absolute;
+    left: 591px;
+    top: 134px;
+    width: 16px;
+    height: 13px;
+  }
+  .aiask-post-comment {
+    color: #787878;
+    text-align: left;
+    font-family: "Roboto-Regular", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    position: absolute;
+    left: 659px;
+    top: 134px;
+    width: 14px;
+    height: 13px;
+  }
+  .aiask-post-box-text {
+    color: #000000;
+    text-align: left;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    position: absolute;
+    left: 16px;
+    top: 66px;
+  }
+
+  .aiask-post-box-title {
+    color: #000000;
+    text-align: left;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    position: absolute;
+    left: 25px;
+    top: 20px;
+  }
+
+
+/* Eye 이미지 스타일 */
+img[src="/Eye.png"] {
+  position: relative; /* 또는 absolute */
+  top: 133px;
+  left: 220px; /* 필요에 따라 조정 */
+}
+
+/* Comment 이미지 스타일 */
+img[src="/comment.png"] {
+  position: relative; /* 또는 absolute */
+  top: 132px;
+  left: 280px;
+}
