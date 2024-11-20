@@ -4,6 +4,7 @@ import Home from "./Home";
 import Login from "./Login";
 import Register from "./Register";
 import AiaskPost from "./AiaskPost";
+import AiaskWriting from "./AiaskWriting";
 // import Aiask from "./Aiask";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Route path="/Login" element={<Login />} />
       <Route path="/Register" element={<Register />} />
       <Route path="/AiaskPost" element={<AiaskPost />} />
+      <Route path="/AiaskWriting" element={<AiaskWriting />} />
     </Routes>
   );
 }
