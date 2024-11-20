@@ -5,7 +5,7 @@ from ai import open_ai
 app = Flask(__name__)
 CORS(app)  # 모든 도메인에서 오는 요청을 허용
 
-@app.route('/process', methods=['POST'])
+@app.route('/aiask', methods=['POST'])
 def process_data():
     try:
         data = request.get_json()
@@ -15,11 +15,8 @@ def process_data():
         
         answer = open_ai.create_chat_completion(content).choices[0].message.content
         
-        print(title,date)
-        print(content)
-        print(answer)
-        
         response = {
+            'title' : title,
             'answer': answer,
             'content': content,
             'time': date

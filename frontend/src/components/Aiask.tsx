@@ -20,6 +20,7 @@ const Aiask: React.FC = () => {
 
     // 버튼 클릭 시 제목, 본문, 날짜 콘솔 출력
     const handleSubmit = async () => {
+        setResponseText("답변 중...");
         const date = new Date().toLocaleString(); // 현재 날짜와 시간 가져오기
 
         try {
@@ -30,27 +31,15 @@ const Aiask: React.FC = () => {
             };
 
             const response = await axios.post(
-                'http://localhost:5000/process',
+                'http://localhost:5000/aiask',
                 requestData,
                 { headers: { 'Content-Type': 'application/json' } }
             );
-
             setResponseText(response.data.answer);  // 백엔드에서 가공된 문자열 받기
-            
-        } catch (error) {
-            if (error.response) {
-                // 서버에서 응답이 왔을 때
-                console.error('Response error:', error.response.data);
-            } else if (error.request) {
-                // 요청이 서버로 전송되었지만 응답이 없을 때
-                console.error('Request error:', error.request);
-            } else {
-                // 기타 에러
-                console.error('Error:', error.message);
-            }
+        } catch (e) {
+            console.error('error:', e);
+            setResponseText("에러");
         }
-
-        console.log(responseText);       // 콘솔에 출력
 
         // 필요 시 입력 필드 초기화
         // setTitle('');
@@ -79,6 +68,12 @@ const Aiask: React.FC = () => {
                     onChange={handleContentChange}
                     className="ask-text-input"
                     placeholder="ㅡ"
+                />
+            </div>
+            <div className="answer-box">
+                <textarea
+                    value={responseText}
+                    className="answer-text"
                 />
             </div>
             <button type="button" onClick={handleSubmit} className="ask-button">
