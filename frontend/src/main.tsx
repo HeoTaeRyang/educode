@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';  // 추가된 부분
