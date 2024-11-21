@@ -16,14 +16,21 @@ const AiaskPostBox: React.FC<AiaskPostBoxProps> = ({ title, user, time, views, c
       <div className="aiask-post-box-title">
         <div>{title}</div>
       </div>
-      <div className="aiask-post-user">{user}</div>
-      <div className="aiask-post-time">{time}</div>
-      <div className="aiask-post-watch">{views}</div>
-      <div className="aiask-post-comment">{comments}</div>
       <div className="aiask-post-box-text">{text}</div>
-      <img src="/Eye.png" alt="aiask" />
-      <img src="/comment.png" alt="aiask" />
-      
+      <div className="aiask-post-bottom-box">
+       <div className="aiask-post-user">{user}</div>
+       <div className="aiask-post-time">{time}</div>
+
+       <div className="eye">
+       <img src="/Eye.png" alt="aiask" /></div>
+
+       <div className="aiask-post-watch">{views}</div>
+
+       <div className="comment">
+       <img src="/comment.png" alt="aiask" /></div>
+       
+       <div className="aiask-post-comment">{comments}</div>
+      </div>
     </div>
   );
 };
