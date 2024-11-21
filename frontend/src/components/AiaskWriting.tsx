@@ -1,7 +1,6 @@
 import React, { useState } from 'react'; // React와 useState를 한 번에 가져옴
-import '../styles/AiaskWriting.css'; // AiaskWriting.css 불러옴
+import '../styles/AiaskWriting.css'; // Aiask.css 불러옴
 import axios from "axios";
-import { Link } from 'react-router-dom';
 
 const Aiask: React.FC = () => {
 
@@ -22,28 +21,24 @@ const Aiask: React.FC = () => {
     // 버튼 클릭 시 제목, 본문, 날짜 콘솔 출력
     const handleSubmit = async () => {
         setResponseText("답변 중...");
+        const date = new Date().toLocaleString(); // 현재 날짜와 시간 가져오기
 
         try {
             const requestData = {
                 title: title,
                 content: content,
-                id: 'admin'
+                date: date
             };
 
             const response = await axios.post(
-                'http://localhost:5000/aiask',
+                'http://localhost:5000/process',
                 requestData,
                 { headers: { 'Content-Type': 'application/json' } }
             );
             setResponseText(response.data.answer);  // 백엔드에서 가공된 문자열 받기
         } catch (e) {
             console.error('error:', e);
-            setResponseText("에러");
         }
-
-        // 필요 시 입력 필드 초기화
-        // setTitle('');
-        // setContent('');
     };
 
     return (
@@ -62,22 +57,23 @@ const Aiask: React.FC = () => {
                     className="ask-title-input"
                 />
             </div>
-            <div className="ask-text-box">
+            {/*<div className="ask-text-box">
                 <textarea
                     value={content}
                     onChange={handleContentChange}
                     className="ask-text-input"
-                    placeholder="질문 내용을 입력하세요"
+                    placeholder="ㅡ"
+                />
+            </div>*/}
+            <div className="answer-box">
+                <textarea
+                    value={responseText}
+                    className="answer-text"
                 />
             </div>
-            <Link to="/AiaskPost">
-                뒤로가기
-            </Link>
-            <Link to="/AiaskPost">
-                <button type="button" onClick={handleSubmit} className="ask-button">
-                    질문하기 (-100p)
-                </button>
-            </Link>
+            <button type="button" onClick={handleSubmit} className="ask-button">
+                질문하기 (-100p)
+            </button>
         </div>
     );
 };

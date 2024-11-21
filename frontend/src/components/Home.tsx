@@ -6,35 +6,6 @@ import '../styles/Home.css';
 const Home: React.FC = () => {
   return (
     <div className="app">
-      <nav className="navbar">
-        <div className="nav-bar-top">
-            
-            <div className="logos">EduCode</div>
-
-            <div className="home">Home</div>
-            <div className="ai1"><Link to="/AiaskPost" className="btn-register">AI 질문</Link></div>
-            <div className="div">자유 게시판</div>
-            <div className="div2">구인 게시판</div>
-            <div className="div3">게임</div>
-
-            {/* 회원가입 버튼 */}
-            <div className="register"><Link to="/register" className="btn-register">Register</Link></div>
-            
-
-            {/* 로그인 버튼 */}
-            <div className="login"><Link to="/login" className="btn-login">Login</Link></div>
-            
-          <div className="line-3"></div>
-          <div className="line-4"></div>
-          
-          <div className="button-rent">
-            <img className="moon" src="moon0.svg" />
-            <img className="line-32" src="line-31.svg" />
-            <img className="sun" src="sun0.svg" />
-          </div>
-        </div>
-      </nav>
-
       <div className="mainbox">
         <img className="main" src="main0.svg" />
         <div className="edu-code">EduCode</div>

@@ -10,7 +10,7 @@ const NavBar: React.FC = () => {
         <div className="nav-con">
           <div className="navbt0"><a href="/">Home</a></div>
           <div className="navbt1">
-            <a href="/aiask" className="btn-aiask">AI 질문</a>
+            <a href="/aiask/post" className="btn-aiask">AI 질문</a>
           </div>
           <div className="navbt2">자유 게시판</div>
           <div className="navbt3">구인 게시판</div>
