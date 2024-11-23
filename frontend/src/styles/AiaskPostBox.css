@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+
+.aiask-post-box {
+    margin-bottom: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #000000;
+    border-width: 1px;
+    height: 165px;
+    width: 710px;
+    position: relative;
+    display: flex;
+    flex-direction: column; /* 텍스트와 이미지가 위아래로 배치되도록 */
+    align-items:flex-start;
+    box-sizing: border-box; /* 패딩 포함 크기 계산 */
+  }
+
+.aiask-post-box-title {
+    color: #000000;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    position: relative;
+    margin-top:20px;
+    left:50px;
+    
+  }
+  
+.aiask-post-box-text {
+    color: #000000;
+    
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    position: relative;
+    margin-top:20px;
+    left:20px;
+  } 
+
+
+.aiask-post-bottom-box{
+    margin-top:30px;
+    height: 30px;
+    position: relative;
+    flex-direction: row;
+    display:flex;
+  }
+
+  .aiask-post-user {
+    color: #787878;
+    text-align: left;
+    font-family: "Roboto-Regular", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    margin-left:20px;
+    position: relative;
+    width:50px
+  }
+
+  .aiask-post-time {
+    color: #787878;
+    text-align: left;
+    font-family: "Roboto-Regular", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    position: relative;
+    width:500px
+  }
+  .aiask-post-watch {
+    color: #787878;
+    text-align: left;
+    font-family: "Roboto-Regular", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    position: relative;
+    width:30px
+    
+  }
+  .aiask-post-comment {
+    color: #787878;
+    text-align: left;
+    font-family: "Roboto-Regular", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    position: relative;
+    
+  }
+
+.eye,.comment{
+  width:30px;
+}
+
+ 
+
+
+/* Eye 이미지 스타일 */
+img[src="/Eye.png"] {
+  position: relative; /* 또는 absolute */
+  width:20px;
+  height:20px;
+  
+}
+
+/* Comment 이미지 스타일 */
+img[src="/comment.png"] {
+  position: relative; /* 또는 absolute */
+  width:20px;
+  height:20px;
+  
+}
