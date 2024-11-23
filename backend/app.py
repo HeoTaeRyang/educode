@@ -10,6 +10,7 @@ from backend.db import ai_post
 from backend import open_ai
 from werkzeug.security import generate_password_hash, check_password_hash
 from backend.db import user
+from backend.db import quiz
 
 app = Flask(__name__)
 CORS(app)  # 모든 도메인에서 오는 요청을 허용
@@ -108,5 +109,26 @@ def login():
     
     return jsonify({'message': '로그인 성공!'}), 200
     
+# 퀴즈
+@app.route('/quiz', methods=['POST'])
+def get_quiz():
+    data = request.get_json()
+    language = data.get("language")
+    
+    # 지원하지 않는 언어 일 경우
+    if language not in ['java', 'python']:
+        return jsonify({'error': 'Java 또는 Python 을 선택 하세요.'}), 400
+    
+    # 퀴즈를 db에서 가져옴
+    db_quiz = quiz.get_random_quiz(language)
+    
+    # 해당 언어에 대한 퀴즈가 없는 경우
+    if not db_quiz:
+        return jsonify({'error': '해당 언어에 대한 퀴즈가 없습니다.'}), 400
+    
+    print(f"Successfully fetched quiz for language '{language}': {db_quiz}") # 테스트
+    
+    return jsonify({'quiz': db_quiz}), 200
+  
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
