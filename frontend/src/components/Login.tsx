@@ -1,20 +1,96 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom'; // useNavigate 추가
 import '../styles/Login.css'; // Login.css 불러옴
 
 const Login: React.FC = () => {
+    const [id, setId] = useState('');
+    const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState({
+        id: '',
+        password: '',
+    });
+    const navigate = useNavigate(); // useNavigate 훅 사용
+
+    // 입력값 검증 함수
+    const validateForm = () => {
+        const newErrors = { id: '', password: '' };
+
+        if (!id || !password) {
+            newErrors.id = '아이디와 비밀번호를 모두 입력해주세요';
+        }
+
+        setErrors(newErrors);
+        return !newErrors.id && !newErrors.password;
+    };
+
+    // 로그인 요청을 처리하는 함수
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        // 입력 값이 유효한지 체크
+        if (!validateForm()) {
+            return;
+        }
+
+        // 서버에 로그인 요청 보내기
+        const response = await fetch('http://localhost:5000/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ id, password }),
+        });
+
+        const data = await response.json();
+
+        // 서버 응답에 따른 오류 처리
+        if (response.ok) {
+            // 로그인 성공
+            console.log('로그인 성공:', data.message);
+            // 메인 페이지로 이동
+            navigate('/'); // 로그인 성공 후 '/main' 경로로 이동
+        } else {
+            // 서버에서 오는 오류 메시지 처리
+            if (data.error.includes('아이디')) {
+                setErrors({
+                    id: data.error,  // 아이디 오류만 설정
+                    password: '',     // 비밀번호 오류는 초기화
+                });
+            } else if (data.error.includes('비밀번호')) {
+                setErrors({
+                    id: '',           // 아이디 오류는 초기화
+                    password: data.error,  // 비밀번호 오류만 설정
+                });
+            }
+        }
+    };
+
     return (
         <div className="login-container">
             <div className="login-box">
                 <h2>Login</h2>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <label htmlFor="id">ID:</label>
-                    <input type="text" id="id" placeholder="Enter your ID" />
+                    <input
+                        type="text"
+                        id="id"
+                        placeholder="Enter your ID"
+                        value={id}
+                        onChange={(e) => setId(e.target.value)}
+                    />
+                    {errors.id && <p className="error-message">{errors.id}</p>}  {/* 아이디 오류 메시지 */}
 
                     <label htmlFor="password">Password:</label>
-                    <input type="password" id="password" placeholder="Enter your password" />
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    {errors.password && <p className="error-message">{errors.password}</p>}  {/* 비밀번호 오류 메시지 */}
 
-                    <button type="submit" className='login-button'>Login</button>
+                    <button type="submit" className="login-button">Login</button>
                 </form>
                 <p>
                     계정이 없다면, <Link to="/register">Register</Link>
