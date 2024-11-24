@@ -14,7 +14,7 @@ const NavBar: React.FC = () => {
           </div>
           <div className="navbt2">자유 게시판</div>
           <div className="navbt3">구인 게시판</div>
-          <div className="navbt4">게임</div>
+          <div className="navbt4"><a href="/quiz">게임</a></div>
         </div>
 
         
