@@ -50,3 +50,9 @@ def del_post(num):
     cursor = con.cursor()
     cursor.execute(f"UPDATE AI_Post SET Is_Del = 1 WHERE Number='{num}';")
     con.commit()
+
+#댓글들 리턴
+def get_comment_post(num):
+    cursor = con.cursor()
+    cursor.execute(f"SELECT Writer_id,Datetime,Content FROM Comment WHERE Post_Type = 'AI_Post' and Post_Number={num};")
+    return cursor.fetchall()
