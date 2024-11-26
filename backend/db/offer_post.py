@@ -1,4 +1,4 @@
-from connect import con
+from db.connect import con
 
 def get_offer_post_num():
     cursor = con.cursor()
