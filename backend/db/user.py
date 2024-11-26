@@ -1,4 +1,4 @@
-from connect import con
+from db.connect import con
 
 def get_all_user():
     cursor = con.cursor()
@@ -18,4 +18,9 @@ def add_user(id,pw,name):
 def del_user(id):
     cursor = con.cursor()
     cursor.execute(f"DELETE FROM User WHERE ID='{id}';")
+    con.commit()
+
+def add_point(id,point):
+    cursor = con.cursor()
+    cursor.execute(f"UPDATE User SET Point = Point + {point} WHERE ID='{id}';")
     con.commit()
