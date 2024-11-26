@@ -1,4 +1,4 @@
-from connect import con
+from db.connect import con
 
 MAX_PAGE = 10
 
@@ -49,8 +49,8 @@ def del_post(num):
     cursor.execute(f"UPDATE Post SET Is_Del = 1 WHERE Number='{num}';")
     con.commit()
 
-#댓글들 리턴
-def get_comment_post(num):
+#조회수 증가
+def add_views_post(num):
     cursor = con.cursor()
-    cursor.execute(f"SELECT Writer_id,Datetime,Content FROM Comment WHERE Post_Type = 'Post' and Post_Number={num};")
-    return cursor.fetchall()
+    cursor.execute(f"UPDATE Post SET View_Count = View_Count + 1 WHERE Number='{num}';")
+    con.commit()
