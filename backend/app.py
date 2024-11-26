@@ -7,6 +7,9 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/..")
 
 from backend.db import ai_post
 from backend import open_ai
+from backend.db import comment
+from backend.db import user
+from backend.db import recommend
 
 app = Flask(__name__)
 CORS(app)  # 모든 도메인에서 오는 요청을 허용
@@ -50,7 +53,8 @@ def get_aiPostPages():
         tmp1 = ai_post.get_page_post(number)
         
         for i in tmp1:
-            tmp2 = {'id':i[0], 'title':i[1], 'user':i[2],'time':i[3],'views':i[4]}
+            comment_num = ai_post.get_comment_num_post(i[0])[0]
+            tmp2 = {'id':i[0], 'title':i[1], 'user':i[2],'time':i[3],'views':i[4],'comments':comment_num}
             pages.append(tmp2)
         
         response = {
@@ -65,4 +69,12 @@ def get_aiPostPages():
         return jsonify({'error': str(e)}), 500   
     
 if __name__ == '__main__':
+    # 추천 기능 임시 테스트
+    # print(recommend.get_recommend_num(2))
+    # if(recommend.get_recommend('admin',2)):
+    #     print("이미 추천하셨습니다")
+    # else:
+    #     recommend.add_recommend('admin',2)
+    #     print("추천했습니다")
+    # print(recommend.get_recommend_num(2))
     app.run(debug=True, host='0.0.0.0', port=5000)
