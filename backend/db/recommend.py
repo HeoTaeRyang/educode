@@ -8,7 +8,11 @@ def get_recommend(id,num):
 def get_recommend_num(num):
     cursor = con.cursor()
     cursor.execute(f"SELECT Count(*) FROM Recommend WHERE Post_Num={num};")
-    return cursor.fetchone()[0]
+    res = cursor.fetchone()[0]
+    if res:
+        return res
+    else:
+        return 0
 
 def add_recommend(id,num):
     cursor = con.cursor()
