@@ -50,3 +50,9 @@ def del_post(num):
     cursor = con.cursor()
     cursor.execute(f"UPDATE AI_Post SET Is_Del = 1 WHERE Number='{num}';")
     con.commit()
+
+#조회수 증가
+def add_views_post(num):
+    cursor = con.cursor()
+    cursor.execute(f"UPDATE AI_Post SET View_Count = View_Count + 1 WHERE Number='{num}';")
+    con.commit()
