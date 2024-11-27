@@ -84,6 +84,11 @@ const Login: React.FC = () => {
                     계정이 없다면, <Link to="/register">Register</Link>
                 </p>
             </div>
+
+            <div className="login-image">
+                <img src="/educode_login.png" alt="Login" />
+            </div>
+
         </div>
     );
 };

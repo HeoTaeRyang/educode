@@ -8,21 +8,36 @@ const Home: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-      const storedUserid = localStorage.getItem('userid');
-      if (storedUserid) {
-          setUserid(storedUserid);
-      } else {
-          // 로그인 정보가 없으면 로그인 페이지로 이동
-          navigate('/login');
-      }
+    const storedUserid = localStorage.getItem('userid');
+    if (storedUserid) {
+      setUserid(storedUserid);
+    } else {
+      // 로그인 정보가 없으면 로그인 페이지로 이동
+      navigate('/login');
+    }
   }, [navigate]);
 
   const handleLogout = () => {
-      localStorage.removeItem('userid');
-      navigate('/login');
+    localStorage.removeItem('userid');
+    navigate('/login');
   };
   return (
     <div className="app">
+
+      <header className="header">
+        <div className="welcome-bar">
+          {userid && (
+            <>
+              <span className="welcome-text">환영합니다, {userid}님!</span>
+              <button className="logout-button" onClick={handleLogout}>
+                Logout
+              </button>
+            </>
+          )}
+        </div>
+      </header>
+
+
       <div className="mainbox">
         <img className="main" src="main0.svg" />
         <div className="edu-code">EduCode</div>
