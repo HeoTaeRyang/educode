@@ -24,3 +24,9 @@ def add_point(id,point):
     cursor = con.cursor()
     cursor.execute(f"UPDATE User SET Point = Point + {point} WHERE ID='{id}';")
     con.commit()
+
+# 상위 포인트 사용자 3명
+def get_top_point_user():
+    cursor = con.cursor()
+    cursor.execute("SELECT Name, Point FROM User ORDER BY Point DESC LIMIT 3;")
+    return cursor.fetchall()
