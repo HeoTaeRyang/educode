@@ -49,16 +49,15 @@ def get_aiPostPages():
         number = data.get('pageNumber', '')
         
         totalPages = ai_post.get_max_page()
-        
         pages = []
         
         tmp1 = ai_post.get_page_post(number)
         
         for i in tmp1:
-            comment_num = ai_post.get_comment_num_post(i[0])[0]
+            comment_num = comment.get_comment_num_post("AI_Post",i[0])
             tmp2 = {'id':i[0], 'title':i[1], 'user':i[2],'time':i[3],'views':i[4],'comments':comment_num}
             pages.append(tmp2)
-        
+
         response = {
             'totalPages' : totalPages,
             'Pages' : pages
