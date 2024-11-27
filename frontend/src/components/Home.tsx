@@ -1,9 +1,26 @@
 // src/components/Home.tsx
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/Home.css';
 
 const Home: React.FC = () => {
+  const [userid, setUserid] = useState<string | null>(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+      const storedUserid = localStorage.getItem('userid');
+      if (storedUserid) {
+          setUserid(storedUserid);
+      } else {
+          // 로그인 정보가 없으면 로그인 페이지로 이동
+          navigate('/login');
+      }
+  }, [navigate]);
+
+  const handleLogout = () => {
+      localStorage.removeItem('userid');
+      navigate('/login');
+  };
   return (
     <div className="app">
       <div className="mainbox">
