@@ -10,6 +10,8 @@ from backend import open_ai
 from backend.db import comment
 from backend.db import user
 from backend.db import recommend
+from werkzeug.security import generate_password_hash, check_password_hash
+from backend.db import quiz
 
 app = Flask(__name__)
 CORS(app)  # 모든 도메인에서 오는 요청을 허용
@@ -67,6 +69,68 @@ def get_aiPostPages():
     except Exception as e:
         # 예외 처리: 에러 메시지를 클라이언트에 반환
         return jsonify({'error': str(e)}), 500   
+    
+# 회원가입
+@app.route('/register', methods=['POST'])
+def register():
+    data = request.get_json()
+    userid = data.get('id')
+    password = data.get('password')
+    username = data.get('username')
+    
+    # 아이디 중복 확인
+    check_id = user.get_user(userid)
+    if check_id:
+        return jsonify({'error': '이미 존재하는 아이디입니다.'}), 400
+    
+    # 비밀번호 해시 처리
+    hashed_password = generate_password_hash(password)
+    
+    # 사용자 추가
+    user.add_user(userid, hashed_password, username)
+    
+    return jsonify({'message': '회원가입 성공!'}), 200
+
+# 로그인
+@app.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    
+    userid = data.get("id")
+    password = data.get("password")
+    
+    # 사용자 존재 여부 확인
+    ckeck_id = user.get_user(userid)
+    if not ckeck_id:
+        return jsonify({'error': '아이디가 존재하지 않습니다.'}), 400
+    
+    db_userid, db_password, db_username, db_point = ckeck_id[0]
+    
+    if not check_password_hash(db_password, password):
+        return jsonify({'error': '비밀번호가 잘못되었습니다.'}), 400
+    
+    return jsonify({'message': '로그인 성공!'}), 200
+    
+# 퀴즈
+@app.route('/quiz', methods=['POST'])
+def get_quiz():
+    data = request.get_json()
+    language = data.get("language")
+    
+    # 지원하지 않는 언어 일 경우
+    if language not in ['java', 'python']:
+        return jsonify({'error': 'Java 또는 Python 을 선택 하세요.'}), 400
+    
+    # 퀴즈를 db에서 가져옴
+    db_quiz = quiz.get_random_quiz(language)
+    
+    # 해당 언어에 대한 퀴즈가 없는 경우
+    if not db_quiz:
+        return jsonify({'error': '해당 언어에 대한 퀴즈가 없습니다.'}), 400
+    
+    print(f"Successfully fetched quiz for language '{language}': {db_quiz}") # 테스트
+    
+    return jsonify({'quiz': db_quiz}), 200
     
 if __name__ == '__main__':
     # 추천 기능 임시 테스트
