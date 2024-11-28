@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";import Home from "./Home";
 import Login from "./Login";
 import Register from "./Register";
@@ -8,6 +9,10 @@ import Quiz from "./Quiz";
 
 function App() {
   const isLoggedIn = !!localStorage.getItem('userid');
+
+  useEffect(() => {
+    document.title = "educode"; // 모든 페이지에서 동일한 제목 설정
+  }, []);
 
   return (
     <Routes>
