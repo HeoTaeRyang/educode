@@ -17,13 +17,16 @@ const AiaskPost = () => {
   const [totalPages, setTotalPages] = useState<number>(0); // totalPages의 타입을 number로 지정
   const [currentPage, setCurrentPage] = useState<number>(1); // currentPage의 타입을 number로 지정
   const [posts, setPosts] = useState<Post[]>([]); // posts의 타입을 Post[]로 지정
+  const [sortMethod, setSortMethod] = useState<number>(0);
 
   // 페이지 변경 핸들러
   const handlePageChange = async (pageNumber: number) => {
     setCurrentPage(pageNumber);
-
     try {
-      const requestData = { pageNumber: pageNumber };
+      const requestData = 
+      { pageNumber: pageNumber,
+        sortMethod: sortMethod,
+      };
 
       const response = await axios.post(
         'http://localhost:5000/aiaskPostPages',
@@ -39,9 +42,8 @@ const AiaskPost = () => {
 
   useEffect(() => {
     handlePageChange(1); // 첫 번째 페이지 데이터 가져오기
-  }, []);
+  }, [sortMethod]);
 
-  // currentPosts를 currentPage에 맞게 설정
   const postsPerPage = 10;
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -55,7 +57,17 @@ const AiaskPost = () => {
       </div>
 
       <div className="aiask-post-array">
-        -최신순 -조회순
+        <button 
+          onClick={() => setSortMethod(0)}
+          className={`aiask-sort-method-button ${sortMethod === 0 ? 'active' : ''}`}
+        >
+          최신순
+        </button>
+        <button onClick={() => setSortMethod(1)}
+        className={`aiask-sort-method-button ${sortMethod === 1 ? 'active' : ''}`}
+        >
+          조회순
+        </button>
       </div>
 
       {currentPosts.map((post) => (
@@ -84,7 +96,7 @@ const AiaskPost = () => {
       </div>
 
       <button className="aiask-send-button">
-        <a href="/aiask/writing" className="aiask-send-button-0">+ 질문하기 (-100p)</a>
+        <a href="/aiask/writing" className="aiask-send-button-0">질문하기 (100p)</a>
       </button>
     </div>
   );
