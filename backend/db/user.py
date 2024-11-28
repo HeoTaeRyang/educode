@@ -24,3 +24,17 @@ def add_point(id,point):
     cursor = con.cursor()
     cursor.execute(f"UPDATE User SET Point = Point + {point} WHERE ID='{id}';")
     con.commit()
+
+def sub_point(id,point):
+    cursor = con.cursor()
+    cursor.execute(f"UPDATE User SET Point = Point - {point} WHERE ID='{id}';")
+    con.commit()
+
+def check_point(id,point):
+    cursor = con.cursor()
+    cursor.execute(f"SELECT Point from User WHERE ID = '{id}';")
+    user_point = cursor.fetchone()[0]
+    if user_point >= point:
+        return 1
+    else:
+        return 0
