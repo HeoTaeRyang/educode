@@ -1,6 +1,7 @@
 // src/components/Home.tsx
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from "axios";
 import '../styles/Home.css';
 
 const Home: React.FC = () => {
@@ -17,6 +18,23 @@ const Home: React.FC = () => {
     }
   }, [navigate]);
 
+  const handleAttendance = async () => {
+    try {
+        const requestData = {
+            id: localStorage.getItem('userid'),
+        };
+
+        const response = await axios.post(
+            'http://localhost:5000/attendence',
+            requestData,
+            { headers: { 'Content-Type': 'application/json' } }
+        );
+        alert(response.data.answer);
+    } catch (e) {
+        console.error('error:', e);
+    }
+  }
+
   const handleLogout = () => {
     localStorage.removeItem('userid');
     navigate('/login');
@@ -29,6 +47,9 @@ const Home: React.FC = () => {
           {userid && (
             <>
               <span className="welcome-text">환영합니다, {userid}님!</span>
+              <button className="logout-button" onClick={handleAttendance}>
+                출석하기
+              </button>
               <button className="logout-button" onClick={handleLogout}>
                 Logout
               </button>
