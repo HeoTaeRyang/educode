@@ -1,4 +1,5 @@
 import React, { useState } from 'react'; // React와 useState를 한 번에 가져옴
+import { useNavigate } from 'react-router-dom';
 import '../styles/AiaskWriting.css'; // Aiask.css 불러옴
 import axios from "axios";
 
@@ -6,7 +7,7 @@ const Aiask: React.FC = () => {
 
     const [title, setTitle] = useState(''); // 제목 상태
     const [content, setContent] = useState(''); // 본문 상태
-    const [responseText, setResponseText] = useState("");
+    const navigate = useNavigate();
 
     // 제목 입력 변화 핸들러
     const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,22 +21,21 @@ const Aiask: React.FC = () => {
 
     // 버튼 클릭 시 제목, 본문, 날짜 콘솔 출력
     const handleSubmit = async () => {
-        setResponseText("답변 중...");
-        const date = new Date().toLocaleString(); // 현재 날짜와 시간 가져오기
-
+        setContent("답변 중... 잠시만 기다려주세요");
         try {
             const requestData = {
                 title: title,
                 content: content,
-                date: date
+                id: localStorage.getItem('userid')
             };
 
             const response = await axios.post(
-                'http://localhost:5000/process',
+                'http://localhost:5000/aiask',
                 requestData,
                 { headers: { 'Content-Type': 'application/json' } }
             );
-            setResponseText(response.data.answer);  // 백엔드에서 가공된 문자열 받기
+            alert(response.data.answer);
+            navigate('/aiask/post');
         } catch (e) {
             console.error('error:', e);
         }
@@ -57,18 +57,12 @@ const Aiask: React.FC = () => {
                     className="ask-title-input"
                 />
             </div>
-            {/*<div className="ask-text-box">
+            <div className="ask-text-box">
                 <textarea
                     value={content}
                     onChange={handleContentChange}
                     className="ask-text-input"
-                    placeholder="ㅡ"
-                />
-            </div>*/}
-            <div className="answer-box">
-                <textarea
-                    value={responseText}
-                    className="answer-text"
+                    placeholder="질문을 입력하세요"
                 />
             </div>
             <button type="button" onClick={handleSubmit} className="ask-button">
