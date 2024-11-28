@@ -135,6 +135,34 @@ def get_quiz():
     
     return jsonify({'quiz': db_quiz}), 200
 
+#출석 기능
+@app.route('/attendence', methods=['POST'])
+def attendence():
+    try:
+        data = request.get_json()
+        id = data.get('id', '')
+        
+        now = dt.now()
+        datetime = now.strftime("%Y-%m-%d")
+
+        print(user.get_last_login(id))
+
+        if(user.get_last_login(id) != datetime):
+            user.set_last_login(id,datetime)
+            user.add_point(id,100)
+            res = "출석! 100포인트 지급."
+        else:
+            res = "이미 출석했습니다"
+        
+        response = {
+            'answer': res,
+        }
+        
+        # 결과를 JSON 형식으로 반환
+        return jsonify(response)
+    except Exception as e:
+        # 예외 처리: 에러 메시지를 클라이언트에 반환
+        return jsonify({'error': str(e)}), 500
 
     
 if __name__ == '__main__':
