@@ -51,11 +51,16 @@ def get_aiPostPages():
     try:
         data = request.get_json()
         number = data.get('pageNumber', '')
+        sortMethod = data.get('sortMethod', '')
         
         totalPages = ai_post.get_max_page()
         pages = []
-        
-        tmp1 = ai_post.get_page_post(number)
+        if sortMethod == 0:
+            tmp1 = ai_post.get_page_post_date(number)
+            print("최신순")
+        else:
+            tmp1 = ai_post.get_page_post_views(number)
+            print("조회순")
         
         for i in tmp1:
             comment_num = comment.get_comment_num_post("AI_Post",i[0])
