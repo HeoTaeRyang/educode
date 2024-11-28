@@ -4,7 +4,7 @@ import Login from "./Login";
 import Register from "./Register";
 import Aiask from "./AiaskPost";
 import ShellRoute from "../ShellRoute";  // 새로 추가된 쉘 라우트
-import AiaskLook from './AiaskLook';
+// import AiaskLook from './AiaskLook';
 import Quiz from "./Quiz";
 
 function App() {
