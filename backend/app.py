@@ -16,6 +16,7 @@ from backend.db import quiz
 app = Flask(__name__)
 CORS(app)  # 모든 도메인에서 오는 요청을 허용
 
+#ai질문게시판 작성
 @app.route('/aiask', methods=['POST'])
 def get_answer():
     try:
@@ -23,17 +24,19 @@ def get_answer():
         title = data.get('title', '')
         content = data.get('content', '')
         id = data.get('id', '')
-        
-        now = dt.now()
-        datetime = now.strftime("%Y-%m-%d %H:%M:%S")
-        answer = open_ai.create_chat_completion(content).choices[0].message.content
-        
-        ai_post.add_post(title, id, datetime, content, answer)
+        res = ''
+        if(user.check_point(id,100)):
+            now = dt.now()
+            datetime = now.strftime("%Y-%m-%d %H:%M:%S")
+            answer = open_ai.create_chat_completion(content).choices[0].message.content
+            ai_post.add_post(title, id, datetime, content, answer)
+            user.sub_point(id,100)
+            res = "질문 작성이 완료되었습니다."
+        else:
+            res = "포인트가 부족합니다."
         
         response = {
-            'title' : title,
-            'answer': answer,
-            'content': content,
+            'answer': res,
         }
         
         # 결과를 JSON 형식으로 반환
@@ -41,7 +44,8 @@ def get_answer():
     except Exception as e:
         # 예외 처리: 에러 메시지를 클라이언트에 반환
         return jsonify({'error': str(e)}), 500
-    
+
+#ai질문게시판 페이지별 조회
 @app.route('/aiaskPostPages', methods=['POST'])
 def get_aiPostPages():
     try:
@@ -130,6 +134,8 @@ def get_quiz():
     print(f"Successfully fetched quiz for language '{language}': {db_quiz}") # 테스트
     
     return jsonify({'quiz': db_quiz}), 200
+
+
     
 if __name__ == '__main__':
     # 추천 기능 임시 테스트
