@@ -8,6 +8,7 @@ const Aiask: React.FC = () => {
     const [title, setTitle] = useState(''); // 제목 상태
     const [content, setContent] = useState(''); // 본문 상태
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
 
     // 제목 입력 변화 핸들러
     const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,7 +22,8 @@ const Aiask: React.FC = () => {
 
     // 버튼 클릭 시 제목, 본문, 날짜 콘솔 출력
     const handleSubmit = async () => {
-        setContent("답변 중... 잠시만 기다려주세요");
+        if (loading) return;
+        setLoading(true);
         try {
             const requestData = {
                 title: title,
@@ -65,8 +67,13 @@ const Aiask: React.FC = () => {
                     placeholder="질문을 입력하세요"
                 />
             </div>
-            <button type="button" onClick={handleSubmit} className="ask-button">
-                질문하기 (-100p)
+            <button
+                type="button"
+                onClick={handleSubmit}
+                className="ask-button"
+                disabled={loading} // 로딩 상태일 때 버튼 비활성화
+            >
+                {loading ? '답변 중...' : '질문하기 (-100p)'}
             </button>
         </div>
     );
