@@ -128,8 +128,6 @@ def get_quiz():
     if not db_quiz:
         return jsonify({'error': '해당 언어에 대한 퀴즈가 없습니다.'}), 400
     
-    print(f"Successfully fetched quiz for language '{language}': {db_quiz}") # 테스트
-    
     return jsonify({'quiz': db_quiz}), 200
 
 # 포인트 랭킹
