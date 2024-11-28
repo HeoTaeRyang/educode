@@ -48,10 +48,12 @@ body {
 }
 
 .rectangle-23785 {
-  background: #ffffff; /* 흰색 */
+  background: #ffffff;
+  /* 흰색 */
   height: 900px;
   position: relative;
-  margin-top: 20px; /* 위쪽 요소와 간격 */
+  margin-top: 20px;
+  /* 위쪽 요소와 간격 */
 }
 
 
@@ -90,6 +92,7 @@ body {
   align-items: center;
   justify-content: flex-start;
 }
+
 .ai1 {
   color: #486284;
   text-align: center;
@@ -107,6 +110,7 @@ body {
   align-items: center;
   justify-content: center;
 }
+
 .div {
   color: #486284;
   text-align: center;
@@ -124,6 +128,7 @@ body {
   align-items: center;
   justify-content: center;
 }
+
 .div2 {
   color: #486284;
   text-align: center;
@@ -141,6 +146,7 @@ body {
   align-items: center;
   justify-content: center;
 }
+
 .div3 {
   color: #486284;
   text-align: center;
@@ -159,7 +165,7 @@ body {
   justify-content: center;
 }
 
-  
+
 .line-3 {
   margin-top: -1px;
   border-style: solid;
@@ -174,6 +180,7 @@ body {
   transform-origin: 0 0;
   transform: rotate(90deg) scale(1, 1);
 }
+
 .line-4 {
   margin-top: -1px;
   border-style: solid;
@@ -188,6 +195,7 @@ body {
   transform-origin: 0 0;
   transform: rotate(90deg) scale(1, 1);
 }
+
 .registerbox {
   background: #486284;
   border-radius: 4px;
@@ -197,6 +205,7 @@ body {
   left: 1312.5px;
   top: 35px;
 }
+
 .login {
   color: #ffffff;
   text-align: left;
@@ -230,6 +239,7 @@ body {
   align-items: center;
   justify-content: flex-start;
 }
+
 .button-rent {
   background: #ffffff;
   border-radius: 15px;
@@ -248,6 +258,7 @@ body {
   left: 1061px;
   top: 23px;
 }
+
 .moon {
   flex-shrink: 0;
   width: 20px;
@@ -256,6 +267,7 @@ body {
   position: relative;
   overflow: visible;
 }
+
 .line-32 {
   opacity: 0.8;
   flex-shrink: 0;
@@ -264,6 +276,7 @@ body {
   position: relative;
   overflow: visible;
 }
+
 .sun {
   flex-shrink: 0;
   width: 20px;
@@ -272,13 +285,16 @@ body {
   position: relative;
   overflow: visible;
 }
+
 /* 헤드 이미지 영역*/
 
 .mainbox {
-  background: #ced7e4; /* 연한 파란색 */
+  background: #ced7e4;
+  /* 연한 파란색 */
   height: 833px;
   position: relative;
-  overflow: hidden; /* 이미지가 부모 요소를 넘어가지 않도록 설정 */
+  overflow: hidden;
+  /* 이미지가 부모 요소를 넘어가지 않도록 설정 */
 }
 
 .main {
@@ -291,8 +307,8 @@ body {
 
 .mainbox img {
   position: relative;
-  top: 15%;   
-  left: 10%;  
+  top: 15%;
+  left: 10%;
   height: auto;
 }
 
@@ -300,6 +316,7 @@ body {
 .edu-code * {
   box-sizing: border-box;
 }
+
 .edu-code {
   color: #0b132a;
   text-align: left;
@@ -310,22 +327,25 @@ body {
   position: relative;
   width: 312px;
   height: 253px;
-  top: 0px;   
-  left: 870px;  
+  top: 0px;
+  left: 870px;
 }
 
 .maintextbox0,
 .maintextbox0 * {
-box-sizing: border-box;
+  box-sizing: border-box;
 }
+
 .maintextbox0 {
-position: relative;
+  position: relative;
 }
+
 .maintextbox1 {
-width: 407px;
-height: 82px;
-position: static;
+  width: 407px;
+  height: 82px;
+  position: static;
 }
+
 .ai0 {
   color: var(--black, #1a202c);
   text-align: left;
@@ -341,8 +361,10 @@ position: static;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  top: -205px;   /* 부모 요소 높이의 10% 만큼 아래로 이동 */
-  left: 880px;  /* 부모 요소 너비의 20% 만큼 오른쪽으로 이동 */
+  top: -205px;
+  /* 부모 요소 높이의 10% 만큼 아래로 이동 */
+  left: 880px;
+  /* 부모 요소 너비의 20% 만큼 오른쪽으로 이동 */
 }
 
 /* footer 영역 */
@@ -351,20 +373,20 @@ position: static;
 .footer * {
   box-sizing: border-box;
 }
+
 .footer {
   background: #d3dce7;
   height: 480px;
   position: relative;
   overflow: hidden;
 }
+
 ._2024-edu-code-all-rights-reserved {
   color: var(--black, #1a202c);
   text-align: left;
-  font-family: var(
-    --semibold-type16-font-family,
-    "PlusJakartaSans-SemiBold",
-    sans-serif
-  );
+  font-family: var(--semibold-type16-font-family,
+      "PlusJakartaSans-SemiBold",
+      sans-serif);
   font-size: var(--semibold-type16-font-size, 16px);
   line-height: var(--semibold-type16-line-height, 150%);
   letter-spacing: var(--semibold-type16-letter-spacing, -0.02em);
@@ -377,6 +399,7 @@ position: static;
   align-items: center;
   justify-content: flex-start;
 }
+
 .line {
   margin-top: -1px;
   border-style: solid;
@@ -390,6 +413,7 @@ position: static;
   transform-origin: 0 0;
   transform: rotate(-180deg) scale(1, 1);
 }
+
 .logo {
   display: flex;
   flex-direction: column;
@@ -400,14 +424,13 @@ position: static;
   left: 60px;
   top: 160.86px;
 }
+
 .our-vision-is-to-provide-convenience-and-help-you {
   color: var(--black, #1a202c);
   text-align: left;
-  font-family: var(
-    --medium-type16-font-family,
-    "PlusJakartaSans-Medium",
-    sans-serif
-  );
+  font-family: var(--medium-type16-font-family,
+      "PlusJakartaSans-Medium",
+      sans-serif);
   font-size: var(--medium-type16-font-size, 16px);
   line-height: var(--medium-type16-line-height, 150%);
   letter-spacing: var(--medium-type16-letter-spacing, -0.02em);
@@ -415,15 +438,18 @@ position: static;
   position: relative;
   width: 292px;
 }
+
 .group-1304 {
   position: absolute;
   inset: 0;
 }
+
 .group-1303 {
   width: 174.16px;
   height: 44px;
   position: static;
 }
+
 .logo2 {
   color: var(--black, #1a202c);
   text-align: left;
@@ -441,6 +467,7 @@ position: static;
   align-items: center;
   justify-content: flex-start;
 }
+
 .socmed-facebook {
   height: auto;
   position: absolute;
@@ -448,6 +475,7 @@ position: static;
   top: 239px;
   overflow: visible;
 }
+
 .socmed-twitter {
   height: auto;
   position: absolute;
@@ -455,12 +483,54 @@ position: static;
   top: 239px;
   overflow: visible;
 }
+
 .socmed-instagram {
   height: auto;
   position: absolute;
   left: 167.2px;
   top: 239px;
   overflow: visible;
+}
+
+.header {
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #dcdcdc;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: flex-end;
+  /* 오른쪽 정렬 */
+  align-items: center;
+}
+
+.welcome-bar {
+  display: flex;
+  align-items: center;
+  /* 텍스트와 버튼 수직 가운데 정렬 */
+  gap: 10px;
+  /* 환영 메시지와 버튼 간격 */
+  white-space: nowrap;
+  /* 텍스트 줄바꿈 방지 */
+}
+
+.welcome-text {
+  font-size: 16px;
+  color: #333;
+}
+
+.logout-button {
+  padding: 5px 12px;
+  font-size: 14px;
+  color: #333;
+  background-color: #e3e7f2;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.logout-button:hover {
+  background-color: #c9d2e5;
+  color: #000;
 }
 
 .header {
