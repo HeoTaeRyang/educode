@@ -114,7 +114,7 @@ def login():
     if not ckeck_id:
         return jsonify({'error': '아이디가 존재하지 않습니다.'}), 400
     
-    db_userid, db_password, db_username, db_point = ckeck_id[0]
+    db_password= ckeck_id[0][1]
     
     if not check_password_hash(db_password, password):
         return jsonify({'error': '비밀번호가 잘못되었습니다.'}), 400
