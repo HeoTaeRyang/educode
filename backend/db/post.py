@@ -25,9 +25,14 @@ def get_max_page():
         return num // MAX_PAGE
 
 #입력한 페이지의 글들 리턴
-def get_page_post(page):
+def get_page_post_date(page):
     cursor = con.cursor()
     cursor.execute(f"SELECT Number,Title,Writer_id,Datetime,View_Count FROM Post WHERE Is_Del = 0 ORDER BY Number DESC LIMIT {MAX_PAGE} OFFSET {page-1} * {MAX_PAGE};")
+    return cursor.fetchall()
+
+def get_page_post_views(page):
+    cursor = con.cursor()
+    cursor.execute(f"SELECT Number,Title,Writer_id,Datetime,View_Count FROM Post WHERE Is_Del = 0 ORDER BY View_Count DESC, Number DESC LIMIT {MAX_PAGE} OFFSET {page-1} * {MAX_PAGE};")
     return cursor.fetchall()
 
 #입력한 번호의 글 content 리턴
