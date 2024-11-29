@@ -44,10 +44,10 @@ def get_content_post(num):
     return cursor.fetchone()
 
 #글 추가
-def add_post(title,header,writer_id,datetime,question,answer):
+def add_post(title,header,writer_id,datetime,content):
     cursor = con.cursor()
     num = get_post_current_num()
-    cursor.execute(f"INSERT INTO Offer_Post VALUES('{num+1}','{title}','{header}','{writer_id}','{datetime}',0,'{question}','{answer}',0);")
+    cursor.execute(f"INSERT INTO Offer_Post VALUES('{num+1}','{title}','{header}','{writer_id}','{datetime}',0,'{content}',0);")
     con.commit()
 
 #글 삭제
