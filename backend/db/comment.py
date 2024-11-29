@@ -15,3 +15,8 @@ def get_comment(post_type,num):
     cursor = con.cursor()
     cursor.execute(f"SELECT Writer_id,Datetime,Content FROM Comment WHERE Post_Type = '{post_type}' and Post_Number={num};")
     return cursor.fetchall()
+
+def add_comment(post_type,num,id,datetime,content):
+    cursor = con.cursor()
+    cursor.execute(f"INSERT INTO Content VALUES('{post_type}','{num}','{id}','{datetime}','{content}');")
+    con.commit()
