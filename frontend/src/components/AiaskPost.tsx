@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import AiaskPostBox from './AiaskPostBox';
 import '../styles/AiaskPost.css';
-import axios from "axios";
+import axios from 'axios';
 
 type Post = {
   id: number;
@@ -23,9 +23,10 @@ const AiaskPost = () => {
   const handlePageChange = async (pageNumber: number) => {
     setCurrentPage(pageNumber);
     try {
-      const requestData = 
-      { pageNumber: pageNumber,
+      const requestData = {
+        pageNumber: pageNumber,
         sortMethod: sortMethod,
+        postsPerPage: 10, // 한 페이지당 보여줄 글 개수
       };
 
       const response = await axios.post(
@@ -34,7 +35,7 @@ const AiaskPost = () => {
         { headers: { 'Content-Type': 'application/json' } }
       );
       setTotalPages(response.data.totalPages);  // 백엔드에서 총 페이지 수 받음
-      setPosts(response.data.Pages); // 백엔드에서 페이지의 글 목록을 받음
+      setPosts(response.data.posts); // 백엔드에서 해당 페이지의 글 목록을 받음
     } catch (e) {
       console.error('error:', e);
     }
@@ -43,11 +44,6 @@ const AiaskPost = () => {
   useEffect(() => {
     handlePageChange(1); // 첫 번째 페이지 데이터 가져오기
   }, [sortMethod]);
-
-  const postsPerPage = 10;
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost); // currentPosts 계산
 
   return (
     <div className="aiask-post-container">
@@ -70,7 +66,7 @@ const AiaskPost = () => {
         </button>
       </div>
 
-      {currentPosts.map((post) => (
+      {posts.map((post) => (
         <AiaskPostBox
           key={post.id}
           title={post.title}

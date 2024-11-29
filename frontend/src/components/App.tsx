@@ -25,7 +25,7 @@ function App() {
       <Route element={<ShellRoute />}>
         <Route
             path="/"
-            element={isLoggedIn ? <Home /> : <Navigate to="/login" />}
+            element={isLoggedIn ? <Home /> : <Navigate to="/" />}
         />
         <Route path="/aiask/post" element={<Aiask />} />
         <Route path="/aiask/writing" element={<Aiask />} />
