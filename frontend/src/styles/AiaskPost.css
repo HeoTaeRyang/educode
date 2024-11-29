@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .aiask-post-container {
   display: flex;
   align-items: center;
@@ -48,10 +49,62 @@
   /* 화면 전체 높이 */
   flex-direction: column;
   justify-content: flex-start;
+=======
+.aiask-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    background-color: rgb(242, 242, 242);
+}
+
+.aiask-box img {
+    /* 이미지 크기를 키움 */
+    height: 300px;
+}
+
+.aiask-container-underbox {
+    display: flex;            /* 자식 요소들을 flexbox로 배치 */
+    justify-content: center;  /* 가로 중앙 정렬 */
+    align-items: center;      /* 세로 중앙 정렬 */
+    height: 20px;             /* 박스의 높이 */
+    background-color: rgb(255, 255, 221); /* 배경 색을 노란색으로 설정 */
+  }
+
+.aiask-post-array{
+    color: #787878;
+    font-family: "Roboto-Regular", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    position: relative;
+    left:300px;
+    margin-bottom: 50px;
+    margin-top:70px;
+ }
+
+.aiask-box {
+    margin:0px;
+    border-radius: 0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: rgb(207, 208, 255);
+    text-align: center;
+    width: 100vw;
+    height:320px;
+}
+
+.aiask-post-list-box{
+    display: flex;
+    align-items: center;
+    background-color: rgb(242, 242, 242);
+    /* 화면 전체 높이 */
+    flex-direction: column;
+    justify-content: flex-start;
+>>>>>>> cda9350fdedb3e3765ba47c34d8b9ccc5f15e2a1
 }
 
 
 .pagination {
+<<<<<<< HEAD
   display: flex;
   justify-content: center;
   margin-top: 20px;
@@ -111,3 +164,22 @@
 .aiask-sort-method-button:hover {
   background-color: #0056b3; /* hover 효과 */
 }
+=======
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+.pagination button {
+    margin: 0 5px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+.pagination button.active {
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+  }
+>>>>>>> cda9350fdedb3e3765ba47c34d8b9ccc5f15e2a1
