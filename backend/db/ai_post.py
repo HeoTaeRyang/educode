@@ -40,7 +40,7 @@ def get_page_post_views(page):
 #입력한 번호의 글 content 리턴
 def get_content_post(num):
     cursor = con.cursor()
-    cursor.execute(f"SELECT Content FROM Post WHERE Number={num};")
+    cursor.execute(f"SELECT Question,Content FROM AI_Post WHERE Number={num};")
     return cursor.fetchone()
 
 #글 추가
