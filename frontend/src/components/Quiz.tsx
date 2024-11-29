@@ -63,6 +63,7 @@ const Quiz: React.FC = () => {
     );
   }
 
+  
   return (
     <div className="quiz-container">
       <h2>{language.toUpperCase()} Quiz</h2>
