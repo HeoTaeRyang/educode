@@ -85,6 +85,8 @@ def register():
     userid = data.get('id')
     password = data.get('password')
     username = data.get('username')
+    now = dt.now()
+    date = now.strftime("%Y-%m-%d")
     
     # 아이디 중복 확인
     check_id = user.get_user(userid)
@@ -95,7 +97,7 @@ def register():
     hashed_password = generate_password_hash(password)
     
     # 사용자 추가
-    user.add_user(userid, hashed_password, username)
+    user.add_user(userid, hashed_password, username, date)
     
     return jsonify({'message': '회원가입 성공!'}), 200
 
@@ -148,12 +150,10 @@ def attendence():
         id = data.get('id', '')
         
         now = dt.now()
-        datetime = now.strftime("%Y-%m-%d")
+        date = now.strftime("%Y-%m-%d")
 
-        print(user.get_last_login(id))
-
-        if(user.get_last_login(id) != datetime):
-            user.set_last_login(id,datetime)
+        if(user.get_last_login(id) != date):
+            user.set_last_login(id,date)
             user.add_point(id,100)
             res = "출석! 100포인트 지급."
         else:

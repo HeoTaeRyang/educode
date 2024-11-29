@@ -10,9 +10,9 @@ def get_user(id):
     cursor.execute(f"SELECT * FROM User WHERE ID='{id}';")
     return cursor.fetchall()
 
-def add_user(id,pw,name):
+def add_user(id,pw,name,date):
     cursor = con.cursor()
-    cursor.execute(f"INSERT INTO User VALUES('{id}','{pw}','{name}',0);")
+    cursor.execute(f"INSERT INTO User VALUES('{id}','{pw}','{name}',0,'{date}');")
     con.commit()
 
 def del_user(id):
