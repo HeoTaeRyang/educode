@@ -107,7 +107,7 @@ def get_aiPost():
 
 #자유게시판 작성
 @app.route('/post', methods=['POST'])
-def post():
+def add_post():
     try:
         data = request.get_json()
         title = data.get('title', '')
@@ -188,6 +188,30 @@ def get_post():
     except Exception as e:
         # 예외 처리: 에러 메시지를 클라이언트에 반환
         return jsonify({'error': str(e)}), 500 
+    
+#자유게시판 추천 기능
+@app.route('/recommend', methods=['POST'])
+def add_recommend():
+    try:
+        data = request.get_json()
+        id = data.get('id','')
+        number = data.get('postNumber', '')
+
+        if(recommend.get_recommend(id,number)):
+            res = "이미 추천했습니다."
+        else:
+            recommend.add_recommend(id,number)
+            res = "추천했습니다"
+        
+        response = {
+            'answer': res,
+        }
+        
+        # 결과를 JSON 형식으로 반환
+        return jsonify(response)
+    except Exception as e:
+        # 예외 처리: 에러 메시지를 클라이언트에 반환
+        return jsonify({'error': str(e)}), 500
 
 #구인구직게시판 작성
 @app.route('/offerPost', methods=['POST'])
@@ -270,6 +294,30 @@ def get_post():
     except Exception as e:
         # 예외 처리: 에러 메시지를 클라이언트에 반환
         return jsonify({'error': str(e)}), 500     
+    
+#댓글
+@app.route('/comment', methods=['POST'])
+def add_comment():
+    try:
+        data = request.get_json()
+        post_type = data.get('postType','')
+        number = data.get('postNumber','')
+        content = data.get('content', '')
+        id = data.get('id', '')
+        now = dt.now()
+        datetime = now.strftime("%Y-%m-%d %H:%M:%S")
+        comment.add_comment(post_type,number,id,datetime,content)
+        res = "댓글 작성이 완료되었습니다"
+        
+        response = {
+            'answer': res,
+        }
+        
+        # 결과를 JSON 형식으로 반환
+        return jsonify(response)
+    except Exception as e:
+        # 예외 처리: 에러 메시지를 클라이언트에 반환
+        return jsonify({'error': str(e)}), 500
 
 # 회원가입
 @app.route('/register', methods=['POST'])
