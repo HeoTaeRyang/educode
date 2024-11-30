@@ -1,13 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import '../styles/Home.css';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "../styles/Home.css";
 
 interface RankingItem {
   rank: number;
-  username?: string;
-  points?: number;
-  name?: string;
-  user?: string;
+  name: string;
+  point?: number; // 포인트 랭킹에 사용
+  user?: string; // 게시판 랭킹에 사용
+}
+
+interface RecentJobPost {
+  index: number;
+  title: string;
+  name: string;
+  content: string;
 }
 
 const Home: React.FC = () => {
@@ -23,44 +29,94 @@ const Home: React.FC = () => {
     freeBoard: [],
     jobBoard: [],
   });
+
+  const [recentJobPosts, setRecentJobPosts] = useState<RecentJobPost[]>([]);
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storedUserid = localStorage.getItem('userid');
+    const storedUserid = localStorage.getItem("userid");
     if (storedUserid) {
       setUserid(storedUserid);
     } else {
-      navigate('/login');
+      navigate("/login");
+      return;
     }
 
-    // 예시 데이터 - 실제로는 DB에서 받아온 데이터를 설정
-    setRankings({
-      points: [
-        { rank: 1, username: '라이언', points: 1400 },
-        { rank: 2, username: '판다', points: 1320 },
-        { rank: 3, username: '곰탱이', points: 1020 },
-      ],
-      aiQuestions: [
-        { rank: 1, name: 'chatgpt API 사용', user: '홈홈' },
-        { rank: 2, name: 'AI를 활용법', user: '개발바닥' },
-        { rank: 3, name: '데이터 분석', user: '뽕뽕' },
-      ],
-      freeBoard: [
-        { rank: 1, name: '대기업 개발자 취업 스펙', user: '일등' },
-        { rank: 2, name: '게임 개발 노답썰', user: '책벌레' },
-        { rank: 3, name: 'AI와 함께한 1년 개발', user: '잡식' },
-      ],
-      jobBoard: [
-        { rank: 1, name: '개발 능력자 구해요', user: '안궁' },
-        { rank: 2, name: '백엔드 모셔가요', user: '하하하' },
-        { rank: 3, name: '열심히 같이 해봐요', user: '공룡' },
-      ],
-    });
+    // 서버에서 데이터 불러오기
+    const fetchRankings = async () => {
+      try {
+        const pointsResponse = await fetch("http://localhost:5000/pointRanking", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+        });
+        const pointsData = await pointsResponse.json();
+
+        const aiQuestionsResponse = await fetch(
+          "http://localhost:5000/aiPostRanking",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+        const aiQuestionsData = await aiQuestionsResponse.json();
+
+        const freeBoardResponse = await fetch(
+          "http://localhost:5000/postRanking",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+        const freeBoardData = await freeBoardResponse.json();
+
+        const jobBoardResponse = await fetch(
+          "http://localhost:5000/offerPostRanking",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+        const jobBoardData = await jobBoardResponse.json();
+
+        setRankings({
+          points: pointsData,
+          aiQuestions: aiQuestionsData,
+          freeBoard: freeBoardData,
+          jobBoard: jobBoardData,
+        });
+      } catch (error) {
+        console.error("Error fetching rankings:", error);
+      }
+    };
+
+    const fetchRecentJobPosts = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:5000/offerPostRecent",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+        const data = await response.json();
+        setRecentJobPosts(data);
+      } catch (error) {
+        console.error("Error fetching recent job posts:", error);
+      }
+    };
+
+    fetchRankings();
+    fetchRecentJobPosts();
   }, [navigate]);
 
   const handleLogout = () => {
-    localStorage.removeItem('userid');
-    navigate('/login');
+    localStorage.removeItem("userid");
+    navigate("/login");
+  };
+
+  const handleMyPage = () => {
+    navigate('/mypage'); // My Page로 이동
   };
 
   return (
@@ -70,16 +126,20 @@ const Home: React.FC = () => {
           {userid && (
             <>
               <span className="welcome-text">환영합니다, {userid}님!</span>
+              <button className="mypage-button" onClick={handleMyPage}>
+                My Page
+              </button>
               <button className="logout-button" onClick={handleLogout}>
                 Logout
               </button>
+
             </>
           )}
         </div>
       </header>
 
       <div className="mainbox">
-        <img className="main" src="main0.svg" />
+        <img className="main" src="main0.svg" alt="Main" />
         <div className="edu-code">EduCode</div>
         <div className="maintextbox0">
           <div className="maintextbox1">
@@ -93,87 +153,53 @@ const Home: React.FC = () => {
       </div>
 
       <main className="content">
+        <div className="title">Ranking</div>
         <div className="ranking-section">
-          <div className="ranking-category">
-            <h3 className="ranking-title">포인트 랭킹</h3>
-            <table className="ranking-table">
-              <thead>
-                <tr>
-                  <th>Rank</th>
-                  <th>Name</th>
-                  <th>Points</th>
-                </tr>
-              </thead>
-              <tbody>
-                {rankings.points.map((item) => (
-                  <tr key={item.rank}>
-                    <td>{item.rank}</td>
-                    <td>{item.username}</td>
-                    <td>{item.points}</td>
+          {[{
+            title: "포인트 랭킹", data: rankings.points, isPoint: true,
+          }, {
+            title: "AI 질문 랭킹", data: rankings.aiQuestions, isPoint: false,
+          }, {
+            title: "자유 게시판 랭킹", data: rankings.freeBoard, isPoint: false,
+          }, {
+            title: "구인 게시판 랭킹", data: rankings.jobBoard, isPoint: false,
+          }].map((ranking, index) => (
+            <div className="ranking-category" key={index}>
+              <h3 className="ranking-title">{ranking.title}</h3>
+              <table className="ranking-table">
+                <thead>
+                  <tr>
+                    <th>Rank</th>
+                    {/* 포인트 랭킹만 Name, 나머지는 Title */}
+                    <th>{ranking.isPoint ? "Name" : "Title"}</th>
+                    {ranking.isPoint && <th>Points</th>}
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody>
+                  {ranking.data.map((item) => (
+                    <tr key={item.rank}>
+                      <td>{item.rank}</td>
+                      <td>{item.name}</td>
+                      {ranking.isPoint && <td>{item.point}</td>}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ))}
+        </div>
 
-          <div className="ranking-category">
-            <h3 className="ranking-title">AI 질문 랭킹</h3>
-            <table className="ranking-table">
-              <thead>
-                <tr>
-                  <th>Rank</th>
-                  <th>Title</th>
-                </tr>
-              </thead>
-              <tbody>
-                {rankings.aiQuestions.map((item) => (
-                  <tr key={item.rank}>
-                    <td>{item.rank}</td>
-                    <td>{item.name}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <div className="ranking-category">
-            <h3 className="ranking-title">자유 게시판 랭킹</h3>
-            <table className="ranking-table">
-              <thead>
-                <tr>
-                  <th>Rank</th>
-                  <th>Title</th>
-                </tr>
-              </thead>
-              <tbody>
-                {rankings.freeBoard.map((item) => (
-                  <tr key={item.rank}>
-                    <td>{item.rank}</td>
-                    <td>{item.name}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <div className="ranking-category">
-            <h3 className="ranking-title">구인 게시판 랭킹</h3>
-            <table className="ranking-table">
-              <thead>
-                <tr>
-                  <th>Rank</th>
-                  <th>Title</th>
-                </tr>
-              </thead>
-              <tbody>
-                {rankings.jobBoard.map((item) => (
-                  <tr key={item.rank}>
-                    <td>{item.rank}</td>
-                    <td>{item.name}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+        <div className="recent-job-section">
+          <div className="title">New</div>
+          <h3 className="recent-job-title">최신 구인글</h3>
+          <div className="recent-job-cards">
+            {recentJobPosts.map((post) => (
+              <div className="recent-job-card" key={post.index}>
+                <div className="recent-job-card-title">{post.title}</div>
+                <div className="recent-job-card-author">{post.name}</div>
+                <div className="recent-job-card-content">{post.content}</div>
+              </div>
+            ))}
           </div>
         </div>
       </main>
@@ -191,9 +217,9 @@ const Home: React.FC = () => {
         <div className="group-1303">
           <div className="logo2">EduCode</div>
         </div>
-        <img className="socmed-facebook" src="facebook0.svg" />
-        <img className="socmed-twitter" src="twitter0.svg" />
-        <img className="socmed-instagram" src="instagram0.svg" />
+        <img className="socmed-facebook" src="facebook0.svg" alt="Facebook" />
+        <img className="socmed-twitter" src="twitter0.svg" alt="Twitter" />
+        <img className="socmed-instagram" src="instagram0.svg" alt="Instagram" />
       </footer>
     </div>
   );
