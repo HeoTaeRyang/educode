@@ -1,0 +1,58 @@
+.freepost-container {
+    padding: 20px;
+  }
+  
+  .freepost-sort-method {
+    margin-bottom: 20px;
+  }
+  
+  .sort-button {
+    margin-right: 10px;
+    padding: 10px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+  }
+  
+  .sort-button.active {
+    background-color: #008cba;
+    color: white;
+  }
+  
+  .freepost-list {
+    margin-bottom: 20px;
+  }
+  
+  .freepost-item {
+    margin-bottom: 15px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fafafa;
+  }
+  
+  .pagination button {
+    margin-right: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+  }
+  
+  .pagination button.active {
+    background-color: #008cba;
+    color: white;
+  }
+  
+  .freepost-write-button {
+    margin-top: 20px;
+  }
+  
+  .write-button-link {
+    text-decoration: none;
+    color: white;
+    background-color: #008cba;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+  

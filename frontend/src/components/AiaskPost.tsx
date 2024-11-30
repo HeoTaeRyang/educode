@@ -14,40 +14,36 @@ type Post = {
 };
 
 const AiaskPost = () => {
-  const [totalPages, setTotalPages] = useState<number>(0); // totalPages의 타입을 number로 지정
-  const [currentPage, setCurrentPage] = useState<number>(1); // currentPage의 타입을 number로 지정
-  const [posts, setPosts] = useState<Post[]>([]); // posts의 타입을 Post[]로 지정
-  const [sortMethod, setSortMethod] = useState<number>(0);
+  const [totalPages, setTotalPages] = useState<number>(0);  // 총 페이지 수
+  const [currentPage, setCurrentPage] = useState<number>(1);  // 현재 페이지
+  const [posts, setPosts] = useState<Post[]>([]);  // 게시글 목록
+  const [sortMethod, setSortMethod] = useState<number>(0);  // 정렬 방법
 
   // 페이지 변경 핸들러
   const handlePageChange = async (pageNumber: number) => {
     setCurrentPage(pageNumber);
     try {
-      const requestData = 
-      { pageNumber: pageNumber,
+      const requestData = {
+        pageNumber: pageNumber,
         sortMethod: sortMethod,
       };
 
+      // 백엔드에서 페이지에 맞는 데이터를 가져옴
       const response = await axios.post(
         'http://localhost:5000/aiaskPostPages',
         requestData,
         { headers: { 'Content-Type': 'application/json' } }
       );
-      setTotalPages(response.data.totalPages);  // 백엔드에서 총 페이지 수 받음
-      setPosts(response.data.Pages); // 백엔드에서 페이지의 글 목록을 받음
+      setTotalPages(response.data.totalPages);  // 총 페이지 수 업데이트
+      setPosts(response.data.Pages);  // 페이지에 맞는 게시글 목록 업데이트
     } catch (e) {
       console.error('error:', e);
     }
   };
 
   useEffect(() => {
-    handlePageChange(1); // 첫 번째 페이지 데이터 가져오기
+    handlePageChange(1);  // 페이지 로딩 시 첫 번째 페이지 데이터 가져오기
   }, [sortMethod]);
-
-  const postsPerPage = 10;
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost); // currentPosts 계산
 
   return (
     <div className="aiask-post-container">
@@ -58,21 +54,24 @@ const AiaskPost = () => {
 
       <div className="aiask-post-array">
         <button 
-          onClick={() => setSortMethod(0)}
+          onClick={() => setSortMethod(0)}  // 최신순 정렬
           className={`aiask-sort-method-button ${sortMethod === 0 ? 'active' : ''}`}
         >
           최신순
         </button>
-        <button onClick={() => setSortMethod(1)}
-        className={`aiask-sort-method-button ${sortMethod === 1 ? 'active' : ''}`}
+        <button 
+          onClick={() => setSortMethod(1)}  // 조회순 정렬
+          className={`aiask-sort-method-button ${sortMethod === 1 ? 'active' : ''}`}
         >
           조회순
         </button>
       </div>
 
-      {currentPosts.map((post) => (
+      {/* 게시글 목록 출력 */}
+      {posts.map((post) => (
         <AiaskPostBox
           key={post.id}
+          postId={post.id}
           title={post.title}
           user={post.user}
           time={post.time}
@@ -87,14 +86,15 @@ const AiaskPost = () => {
         {Array.from({ length: totalPages }, (_, index) => (
           <button
             key={index + 1}
-            onClick={() => handlePageChange(index + 1)}
-            className={currentPage === index + 1 ? 'active' : ''}
+            onClick={() => handlePageChange(index + 1)}  // 페이지 번호 클릭 시 페이지 변경
+            className={currentPage === index + 1 ? 'active' : ''}  // 현재 페이지 활성화
           >
             {index + 1}
           </button>
         ))}
       </div>
 
+      {/* 질문하기 버튼 */}
       <button className="aiask-send-button">
         <a href="/aiask/writing" className="aiask-send-button-0">질문하기 (100p)</a>
       </button>
