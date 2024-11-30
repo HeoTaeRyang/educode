@@ -18,5 +18,5 @@ def get_comment(post_type,num):
 
 def add_comment(post_type,num,id,datetime,content):
     cursor = con.cursor()
-    cursor.execute(f"INSERT INTO Content VALUES('{post_type}','{num}','{id}','{datetime}','{content}');")
+    cursor.execute(f"INSERT INTO Comment VALUES('{post_type}','{num}','{id}','{datetime}','{content}');")
     con.commit()
