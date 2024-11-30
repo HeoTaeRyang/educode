@@ -90,7 +90,7 @@ function App() {
         }
       />
       <Route
-        path="/freepost"
+        path="/free/post"
         element={
           <ShellRoute>
             <FreePost />
@@ -98,7 +98,7 @@ function App() {
         }
       />
       <Route
-        path="/freewriting"
+        path="/free/writing"
         element={
           <ShellRoute>
             <FreeWriting />
