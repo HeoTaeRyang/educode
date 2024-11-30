@@ -77,7 +77,6 @@ const AiaskPost = () => {
           time={post.time}
           views={post.views}
           comments={post.comments}
-          text={post.text}
         />
       ))}
 

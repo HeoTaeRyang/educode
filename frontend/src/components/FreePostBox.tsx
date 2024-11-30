@@ -9,13 +9,14 @@ type FreePostBoxProps = {
   date: string;     // 작성일
   views: number;    // 조회수
   comments: number; // 댓글 수
+  recommends: number; //추천 수
 };
 
-const FreePostBox = ({ postId, title, author, date, views, comments }: FreePostBoxProps) => {
+const FreePostBox: React.FC<FreePostBoxProps> = ({ postId, title, author, date, views, comments, recommends }) => {
   return (
     <div className="freepost-box">
       <div className="freepost-box-title">
-        <Link to={`/freepost/${postId}`} className="freepost-link">
+        <Link to={`/free/${postId}`} className="freepost-link">
           {title}
         </Link>
       </div>
@@ -29,6 +30,10 @@ const FreePostBox = ({ postId, title, author, date, views, comments }: FreePostB
           </div>
           <div className="freepost-comments">
             <img src="/comment-icon.png" alt="댓글 수" />
+            <span>{comments}</span>
+          </div>
+          <div className="freepost-comments">
+            <img src="/comment-icon.png" alt="추천 수" />
             <span>{comments}</span>
           </div>
         </div>

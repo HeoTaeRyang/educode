@@ -9,10 +9,9 @@ interface AiaskPostBoxProps {
   time: string;
   views: number;
   comments: number;
-  text: string;
 }
 
-const AiaskPostBox: React.FC<AiaskPostBoxProps> = ({ postId, title, user, time, views, comments, text }) => {
+const AiaskPostBox: React.FC<AiaskPostBoxProps> = ({ postId, title, user, time, views, comments}) => {
   return (
     <div className="aiask-post-box">
       <div className="aiask-post-box-title">
@@ -20,7 +19,6 @@ const AiaskPostBox: React.FC<AiaskPostBoxProps> = ({ postId, title, user, time, 
           {title}
         </Link>
       </div>
-      <div className="aiask-post-box-text">{text}</div>
       <div className="aiask-post-bottom-box">
         <div className="aiask-post-user">{user}</div>
         <div className="aiask-post-time">{time}</div>
