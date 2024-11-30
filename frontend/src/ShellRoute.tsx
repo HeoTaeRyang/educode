@@ -9,6 +9,9 @@ import AiaskLook from "./components/AiaskLook"; // 글 상세 페이지
 import FreePost from './components/FreePost'; // 글 목록 페이지
 import FreeWriting from './components/FreeWriting'; // 글 작성 페이지
 import FreeLook from './components/FreeLook'; // 글 상세 페이지
+import OfferPost from './components/OfferPost'; // 글 목록 페이지
+import OfferWriting from './components/OfferWriting'; // 글 작성 페이지
+import OfferLook from './components/OfferLook'; // 글 상세 페이지
 
 // ShellRoute 컴포넌트: 네비게이션 바와 콘텐츠를 공통 레이아웃으로 설정
 const ShellRoute = ({ children }: { children: React.ReactNode }) => {
@@ -32,6 +35,13 @@ const FreeLookWithParams = () => {
   const { id } = useParams<{ id: string }>(); // URL의 id 값 추출
   const postId = parseInt(id || "0", 10); // 문자열을 숫자로 변환
   return <FreeLook postId={postId} />;
+};
+
+// OfferLookWithParams 컴포넌트: URL의 id 값을 받아서 FreeLook 컴포넌트에 전달
+const OfferLookWithParams = () => {
+  const { id } = useParams<{ id: string }>(); // URL의 id 값 추출
+  const postId = parseInt(id || "0", 10); // 문자열을 숫자로 변환
+  return <OfferLook postId={postId} />;
 };
 
 function App() {
@@ -102,6 +112,31 @@ function App() {
         element={
           <ShellRoute>
             <FreeWriting />
+          </ShellRoute>
+        }
+      />
+      {/* Offer 관련 라우트 */}
+      <Route
+        path="/offer/:id"
+        element={
+          <ShellRoute>
+            <OfferLookWithParams />
+          </ShellRoute>
+        }
+      />
+      <Route
+        path="/offer/post"
+        element={
+          <ShellRoute>
+            <OfferPost />
+          </ShellRoute>
+        }
+      />
+      <Route
+        path="/offer/writing"
+        element={
+          <ShellRoute>
+            <OfferWriting />
           </ShellRoute>
         }
       />
