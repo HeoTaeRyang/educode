@@ -1,10 +1,15 @@
 import React, { useEffect } from "react";
-import { Route, Routes, Navigate } from "react-router-dom";import Home from "./Home";
+import { Route, Routes, Navigate, useParams } from "react-router-dom"; // useParams 추가
+import Home from "./Home";
 import Login from "./Login";
 import Register from "./Register";
-import Aiask from "./AiaskPost";
+import AiaskPost from "./AiaskPost"; // Aiask 글 목록 페이지
+import AiaskWriting from "./AiaskWriting"; // Aiask 글 작성 페이지
+import AiaskLook from './AiaskLook'; // Aiask 글 상세 페이지
+import FreePost from "./FreePost"; // Free 글 목록 페이지
+import FreeWriting from "./FreeWriting"; // Free 글 작성 페이지
+import FreeLook from "./FreeLook"; // Free 글 상세 페이지
 import ShellRoute from "../ShellRoute";  // 새로 추가된 쉘 라우트
-// import AiaskLook from './AiaskLook';
 import Quiz from "./Quiz";
 
 function App() {
@@ -24,15 +29,40 @@ function App() {
       {/* 네비게이션 바가 필요한 페이지 */}
       <Route element={<ShellRoute />}>
         <Route
-            path="/"
-            element={isLoggedIn ? <Home /> : <Navigate to="/login" />}
+          path="/"
+          element={isLoggedIn ? <Home /> : <Navigate to="/login" />}
         />
-        <Route path="/aiask/post" element={<Aiask />} />
-        <Route path="/aiask/writing" element={<Aiask />} />
-        <Route path="/aiask/:id" element={<Aiask />} />
+
+        {/* Aiask 관련 라우트 */}
+        <Route path="/aiask/post" element={<AiaskPost />} />
+        <Route path="/aiask/writing" element={<AiaskWriting />} />
+        <Route path="/aiask/:id" element={<AiaskLookWithParams />} />
+
+        {/* Free 관련 라우트 */}
+        <Route path="/free/post" element={<FreePost />} />
+        <Route path="/free/writing" element={<FreeWriting />} />
+        <Route path="/free/:id" element={<FreeLookWithParams />} />
       </Route>
     </Routes>
   );
 }
 
+// AiaskLookWithParams 컴포넌트: URL에서 id 값을 받아 AiaskLook에 전달
+const AiaskLookWithParams = () => {
+  const { id } = useParams<{ id: string }>(); // URL에서 id 추출
+  const postId = parseInt(id || "0", 10); // id를 숫자로 변환
+
+  return <AiaskLook postId={postId} />; // postId를 AiaskLook에 전달
+};
+
+// FreeLookWithParams 컴포넌트: URL에서 id 값을 받아 FreeLook에 전달
+const FreeLookWithParams = () => {
+  const { id } = useParams<{ id: string }>(); // URL에서 id 추출
+  const postId = parseInt(id || "0", 10); // id를 숫자로 변환
+
+  return <FreeLook postId={postId} />; // postId를 FreeLook에 전달
+}
+
 export default App;
+
+
