@@ -14,6 +14,7 @@ import OfferWriting from "./OfferWriting"; // Offer 글 작성 페이지
 import OfferLook from "./OfferLook"; // Offer 글 상세 페이지
 import ShellRoute from "../ShellRoute";  // 새로 추가된 쉘 라우트
 import Quiz from "./Quiz";
+import MyPage from './MyPage';
 
 function App() {
   const isLoggedIn = !!localStorage.getItem('userid');
@@ -28,6 +29,7 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/quiz" element={<Quiz />} />
+      <Route path="/mypage" element={<MyPage />} />
 
       {/* 네비게이션 바가 필요한 페이지 */}
       <Route element={<ShellRoute />}>

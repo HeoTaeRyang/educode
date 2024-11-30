@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import "../styles/Quiz.css";
+import { useNavigate } from 'react-router-dom';
 
 const Quiz: React.FC = () => {
   const [quiz, setQuiz] = useState<any>(null);
   const [language, setLanguage] = useState<string | null>(null);
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const [result, setResult] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const fetchQuiz = async (language: string) => {
     try {
@@ -32,19 +34,19 @@ const Quiz: React.FC = () => {
     fetchQuiz(language);
   };
 
-  const handleSubmit = () => {
-    if (selectedAnswer[0] === quiz.answer) {
-      setResult("정답입니다!");
-    } else {
-      setResult("틀렸습니다. 다시 시도하세요.");
-    }
+  const handleHomeClick = () => {
+    navigate('/'); // 홈으로 이동
+  };
+
+  const handleBackToSelection = () => {
+    setLanguage(null); // 언어 선택 화면으로 돌아가기
   };
 
   if (!language) {
     // 언어 선택 화면
     return (
       <div className="quiz-container">
-        <h2>Let’s play a Game!</h2>
+        <h1>Let’s play a Game!</h1>
         <div className="language-selection">
           <div
             className="language-card"
@@ -59,11 +61,16 @@ const Quiz: React.FC = () => {
             Python
           </div>
         </div>
+        {/* 홈과 선택 화면으로 돌아가기 버튼 */}
+        <div className="quiz-buttons-container">
+          <button className="home-button" onClick={handleHomeClick}>
+            Home
+          </button>
+        </div>
       </div>
     );
   }
 
-  
   return (
     <div className="quiz-container">
       <h2>{language.toUpperCase()} Quiz</h2>
@@ -86,12 +93,27 @@ const Quiz: React.FC = () => {
               </li>
             ))}
           </ul>
-          <button onClick={handleSubmit}>Submit</button>
+          <button onClick={() => {
+            if (selectedAnswer[0] === quiz.answer) {
+              setResult("정답입니다!");
+            } else {
+              setResult("틀렸습니다. 다시 시도하세요.");
+            }
+          }}>Submit</button>
           {result && <p className="result">{result}</p>}
         </div>
       ) : (
         <p>Loading quiz...</p>
       )}
+      {/* 홈과 언어 선택 화면으로 돌아가기 버튼 */}
+      <div className="quiz-buttons-container">
+        <button className="home-button" onClick={handleHomeClick}>
+          Home
+        </button>
+        <button className="language-selection-button" onClick={handleBackToSelection}>
+          Select Language
+        </button>
+      </div>
     </div>
   );
 };
