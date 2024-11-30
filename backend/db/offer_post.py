@@ -37,10 +37,10 @@ def get_page_post_views(page):
     cursor.execute(f"SELECT Number,Title,Header,Writer_id,Datetime,View_Count FROM Offer_Post WHERE Is_Del = 0 ORDER BY View_Count DESC, Number DESC LIMIT {MAX_PAGE} OFFSET {page-1} * {MAX_PAGE};")
     return cursor.fetchall()
 
-#입력한 번호의 글 content 리턴
+#입력한 번호의 글 리턴
 def get_content_post(num):
     cursor = con.cursor()
-    cursor.execute(f"SELECT Content FROM Offer_Post WHERE Number={num};")
+    cursor.execute(f"SELECT Title,Header,Writer_id,Datetime,View_Count,Content FROM Offer_Post WHERE Number={num};")
     return cursor.fetchone()
 
 #글 추가

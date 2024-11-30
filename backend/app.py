@@ -63,7 +63,7 @@ def get_aiPostPages():
             tmp1 = ai_post.get_page_post_views(number)
         
         for i in tmp1:
-            comment_num = comment.get_comment_num_post("AI_Post",i[0])
+            comment_num = comment.get_comment_num("AI_Post",i[0])
             tmp2 = {'id':i[0], 'title':i[1], 'user':i[2],'time':i[3],'views':i[4],'comments':comment_num}
             pages.append(tmp2)
 
@@ -86,16 +86,17 @@ def get_aiPost():
         number = data.get('postNumber', '')
         
         ai_post.add_views_post(number)
-        content = ai_post.get_content_post(number)
-        tmp1 = comment.get_comment("AI_Post", number)
+        tmp_post = ai_post.get_content_post(number)
+        tmp_comment = comment.get_comment("AI_Post", number)
         comments = []
+        post = {'title':tmp_post[0], 'id':tmp_post[1], 'datetime':tmp_post[2], 'views':tmp_post[3], 'question':tmp_post[4], 'answer':tmp_post[5]}
 
-        for i in tmp1:
-            tmp2 = {'id':i[0], 'datetime':i[1], 'question':i[2], 'content':i[3]}
-            comments.append(tmp2)
+        for i in tmp_comment:
+            tmp = {'id':i[0], 'datetime':i[1], 'content':i[2]}
+            comments.append(tmp)
 
         response = {
-            'content' : content,
+            'post' : post,
             'comments' : comments
         }
         
