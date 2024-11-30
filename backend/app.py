@@ -63,7 +63,7 @@ def get_aiPostPages():
             tmp1 = ai_post.get_page_post_views(number)
         
         for i in tmp1:
-            comment_num = comment.get_comment_num_post("AI_Post",i[0])
+            comment_num = comment.get_comment_num("AI_Post",i[0])
             tmp2 = {'id':i[0], 'title':i[1], 'user':i[2],'time':i[3],'views':i[4],'comments':comment_num}
             pages.append(tmp2)
 
@@ -215,7 +215,7 @@ def add_recommend():
 
 #구인구직게시판 작성
 @app.route('/offerPost', methods=['POST'])
-def offer_post():
+def add_offer_post():
     try:
         data = request.get_json()
         title = data.get('title', '')
@@ -239,7 +239,7 @@ def offer_post():
 
 #구인구직게시판 페이지별 조회
 @app.route('/offerPostPages', methods=['POST'])
-def get_PostPages():
+def get_offerPostPages():
     try:
         data = request.get_json()
         number = data.get('pageNumber', '')
@@ -270,7 +270,7 @@ def get_PostPages():
     
 #구인구직게시판 게시글 조회
 @app.route('/offerPostLook', methods=['POST'])
-def get_post():
+def get_offer_post():
     try:
         data = request.get_json()
         number = data.get('postNumber', '')
