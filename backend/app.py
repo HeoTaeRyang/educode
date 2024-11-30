@@ -143,7 +143,6 @@ def get_PostPages():
             tmp1 = post.get_page_post_date(number)
         else:
             tmp1 = post.get_page_post_views(number)
-        
         for i in tmp1:
             comment_num = comment.get_comment_num("Post",i[0])
             recommend_num = recommend.get_recommend_num(i[0])
@@ -169,19 +168,20 @@ def get_post():
         number = data.get('postNumber', '')
         
         post.add_views_post(number)
-        content = post.get_content_post(number)
-        tmp1 = comment.get_comment_post("Post", number)
+        tmp_post = post.get_content_post(number)
+        tmp1 = comment.get_comment("Post", number)
         recommends = recommend.get_recommend_num(number)
         comments = []
+
+        free_post = {'title':tmp_post[0], 'id':tmp_post[1], 'datetime':tmp_post[2], 'views':tmp_post[3],'recommends':recommends, 'content':tmp_post[4]}
 
         for i in tmp1:
             tmp2 = {'id':i[0], 'datetime':i[1], 'content':i[2]}
             comments.append(tmp2)
 
         response = {
-            'content' : content,
+            'post' : free_post,
             'comments' : comments,
-            'recommends' : recommends
         }
         
         # 결과를 JSON 형식으로 반환
