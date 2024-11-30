@@ -93,7 +93,7 @@ const FreePost = () => {
       {/* 글 작성 버튼 */}
       <button className="freepost-write-button">
         <a href="/free/writing" className="write-button-link">
-          글 작성하기 (100p)
+          글 작성하기
         </a>
       </button>
     </div>

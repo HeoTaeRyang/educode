@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Route, Routes, Navigate, useParams } from "react-router-dom"; // useParams 추가
 import Home from "./Home";
 import Login from "./Login";
@@ -9,6 +9,9 @@ import AiaskLook from './AiaskLook'; // Aiask 글 상세 페이지
 import FreePost from "./FreePost"; // Free 글 목록 페이지
 import FreeWriting from "./FreeWriting"; // Free 글 작성 페이지
 import FreeLook from "./FreeLook"; // Free 글 상세 페이지
+import OfferPost from "./OfferPost"; // Offer 글 목록 페이지
+import OfferWriting from "./OfferWriting"; // Offer 글 작성 페이지
+import OfferLook from "./OfferLook"; // Offer 글 상세 페이지
 import ShellRoute from "../ShellRoute";  // 새로 추가된 쉘 라우트
 import Quiz from "./Quiz";
 
@@ -42,6 +45,11 @@ function App() {
         <Route path="/free/post" element={<FreePost />} />
         <Route path="/free/writing" element={<FreeWriting />} />
         <Route path="/free/:id" element={<FreeLookWithParams />} />
+
+        {/* Offer 관련 라우트 */}
+        <Route path="/offer/post" element={<OfferPost />} />
+        <Route path="/offer/writing" element={<OfferWriting />} />
+        <Route path="/offer/:id" element={<OfferLookWithParams />} />
       </Route>
     </Routes>
   );
@@ -61,6 +69,14 @@ const FreeLookWithParams = () => {
   const postId = parseInt(id || "0", 10); // id를 숫자로 변환
 
   return <FreeLook postId={postId} />; // postId를 FreeLook에 전달
+}
+
+// OfferLookWithParams 컴포넌트: URL에서 id 값을 받아 OfferLook에 전달
+const OfferLookWithParams = () => {
+  const { id } = useParams<{ id: string }>(); // URL에서 id 추출
+  const postId = parseInt(id || "0", 10); // id를 숫자로 변환
+
+  return <OfferLook postId={postId} />; // postId를 OfferLook에 전달
 }
 
 export default App;

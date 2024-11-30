@@ -13,9 +13,11 @@ const NavBar: React.FC = () => {
             <a href="/aiask/post" className="btn-aiask">AI 질문</a>
           </div>
           <div className="navbt2">
-           <a href="/free/post" className="btn-free">자유 게시판</a>
-            </div>
-          <div className="navbt3">구인 게시판</div>
+            <a href="/free/post" className="btn-free">자유 게시판</a>
+          </div>
+          <div className="navbt3">
+            <a href="/offer/post" className="btn-offer">구인 게시판</a>
+          </div>
           <div className="navbt4"><a href="/quiz">게임</a></div>
         </div>
 
