@@ -215,7 +215,7 @@ def add_recommend():
 
 #구인구직게시판 작성
 @app.route('/offerPost', methods=['POST'])
-def offer_post():
+def add_offer_post():
     try:
         data = request.get_json()
         title = data.get('title', '')
@@ -239,7 +239,7 @@ def offer_post():
 
 #구인구직게시판 페이지별 조회
 @app.route('/offerPostPages', methods=['POST'])
-def get_PostPages():
+def get_offerPostPages():
     try:
         data = request.get_json()
         number = data.get('pageNumber', '')
@@ -270,14 +270,14 @@ def get_PostPages():
     
 #구인구직게시판 게시글 조회
 @app.route('/offerPostLook', methods=['POST'])
-def get_post():
+def get_offerPost():
     try:
         data = request.get_json()
         number = data.get('postNumber', '')
         
         offer_post.add_views_post(number)
         content = offer_post.get_content_post(number)
-        tmp1 = comment.get_comment_post("Offer_Post", number)
+        tmp1 = comment.get_comment("Offer_Post", number)
         comments = []
 
         for i in tmp1:
