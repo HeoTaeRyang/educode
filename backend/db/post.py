@@ -54,3 +54,9 @@ def add_views_post(num):
     cursor = con.cursor()
     cursor.execute(f"UPDATE Post SET View_Count = View_Count + 1 WHERE Number='{num}';")
     con.commit()
+    
+# 상위 조회수 자유 게시글 3개
+def get_top_post():
+    cursor = con.cursor()
+    cursor.execute("SELECT Title FROM Post ORDER BY View_Count DESC LIMIT 3;")
+    return cursor.fetchall()
