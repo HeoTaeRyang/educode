@@ -277,16 +277,16 @@ def get_offerPost():
         number = data.get('postNumber', '')
         
         offer_post.add_views_post(number)
-        content = offer_post.get_content_post(number)
+        tmp_post = offer_post.get_content_post(number)
         tmp1 = comment.get_comment("Offer_Post", number)
         comments = []
+        post = {'title':tmp_post[0], 'header':tmp_post[1], 'id':tmp_post[2], 'datetime':tmp_post[3], 'views':tmp_post[4], 'content':tmp_post[5]}
 
         for i in tmp1:
             tmp2 = {'id':i[0], 'datetime':i[1], 'content':i[2]}
             comments.append(tmp2)
-
         response = {
-            'content' : content,
+            'post' : post,
             'comments' : comments,
         }
         
@@ -413,12 +413,4 @@ def attendence():
 
     
 if __name__ == '__main__':
-    # 추천 기능 임시 테스트
-    # print(recommend.get_recommend_num(2))
-    # if(recommend.get_recommend('admin',2)):
-    #     print("이미 추천하셨습니다")
-    # else:
-    #     recommend.add_recommend('admin',2)
-    #     print("추천했습니다")
-    # print(recommend.get_recommend_num(2))
     app.run(debug=True, host='0.0.0.0', port=5000)
