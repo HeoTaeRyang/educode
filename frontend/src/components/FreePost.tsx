@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import FreePostBox from './FreePostBox';
 import axios from 'axios';
 import '../styles/FreePost.css'; // CSS 스타일 파일 import
 
@@ -8,6 +9,8 @@ type FreePost = {
   user: string;
   time: string;
   views: number;
+  comments: number;
+  recommends: number;
 };
 
 const FreePost = () => {
@@ -18,21 +21,18 @@ const FreePost = () => {
 
   const fetchPosts = async (pageNumber: number, sortMethod: number) => {
     try {
+      const requestData = {
+        pageNumber: pageNumber,
+        sortMethod: sortMethod,
+      };
+
       const response = await axios.post(
-        'http://localhost:5000/freeposts', // 서버에서 데이터를 가져오는 API
-        { pageNumber, sortMethod },
+        'http://localhost:5000/postPages', // 서버에서 데이터를 가져오는 API
+        requestData,
         { headers: { 'Content-Type': 'application/json' } }
       );
-
       setTotalPages(response.data.totalPages); // 총 페이지 수
-      const fetchedPosts = response.data.posts.map((post: any) => ({
-        id: post.id,
-        title: post.title,
-        user: post.user,
-        time: post.time,
-        views: post.views,
-      }));
-      setPosts(fetchedPosts); // 가져온 게시글 목록을 상태에 저장
+      setPosts(response.data.Pages); // 가져온 게시글 목록을 상태에 저장
     } catch (error) {
       console.error('게시글 목록을 가져오는 중 오류 발생:', error);
     }
@@ -65,14 +65,17 @@ const FreePost = () => {
       </div>
 
       {/* 게시글 목록 */}
-      <div className="freepost-list">
-        {posts.map((post) => (
-          <div key={post.id} className="freepost-item">
-            <h3>{post.title}</h3>
-            <p>작성자: {post.user} | 작성일: {post.time} | 조회수: {post.views}</p>
-          </div>
-        ))}
-      </div>
+      {posts.map((post) => (
+        <FreePostBox
+          postId={post.id}
+          title={post.title}
+          author={post.user}
+          date={post.time}
+          views={post.views}
+          comments={post.comments}
+          recommends={post.recommends}
+        />
+      ))}
 
       {/* 페이징 버튼 */}
       <div className="pagination">

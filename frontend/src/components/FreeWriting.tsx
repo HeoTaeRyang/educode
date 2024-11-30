@@ -1,19 +1,28 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const FreeWriting = () => {
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5000/freeposts', {
-        title,
-        text,
-      });
-      console.log('글 작성 성공:', response.data);
+      const requestData = {
+        title: title,
+        content: text,
+        id: localStorage.getItem('userid')
+      };
+      const response = await axios.post(
+        'http://localhost:5000/post',
+        requestData,
+        { headers: { 'Content-Type': 'application/json' } }
+    );
+      alert(response.data.answer);
+      navigate('/free/post');
     } catch (error) {
       console.error('글 작성 중 오류 발생:', error);
     }
@@ -34,7 +43,7 @@ const FreeWriting = () => {
         </div>
         <div>
           <label>내용:</label>
-          <textarea
+          <input
             value={text}
             onChange={(e) => setText(e.target.value)}
             required
