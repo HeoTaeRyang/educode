@@ -61,6 +61,7 @@
     cursor: pointer; /* 마우스를 올리면 포인터 커서 표시 */
     transition: background-color 0.3s ease; /* 부드러운 색상 변화 */
     margin-left:550px;
+    width:200px;
   }
   .offer-send-button{
     text-decoration: none; /* 텍스트에 밑줄을 없애기 */
