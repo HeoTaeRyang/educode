@@ -7,18 +7,7 @@
     margin: 0;
   }
   
-  .offer-box img {
-    /* 이미지 크기를 키움 */
-    height: 300px;
-  }
-  
-  .offer-container-underbox {
-    display: flex;            /* 자식 요소들을 flexbox로 배치 */
-    justify-content: center;  /* 가로 중앙 정렬 */
-    align-items: center;      /* 세로 중앙 정렬 */
-    height: 20px;             /* 박스의 높이 */
-    background-color: rgb(255, 255, 221); /* 배경 색을 노란색으로 설정 */
-  }
+
   
   .offer-post-array{
     color: #787878;
@@ -31,15 +20,7 @@
     margin-top:70px;
   }
   
-  .offer-box {
-    margin:0px;
-    border-radius: 0px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: rgb(207, 208, 255);
-    text-align: center;
-    width: 100vw;
-    height:320px;
-  }
+ 
   
   .offer-post-list-box{
     display: flex;

@@ -48,8 +48,8 @@ const AiaskPost = () => {
   return (
     <div className="aiask-post-container">
       <div className="aiask-box">
-        <div className="aiask-container-underbox"></div>
         <img src="/aiask-image.png" alt="aiask" />
+        <div className="aiask-container-underbox"></div>
       </div>
 
       <div className="aiask-post-array">

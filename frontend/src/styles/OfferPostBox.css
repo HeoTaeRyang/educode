@@ -88,7 +88,7 @@
     
   }
 
-.eye,.comment{
+.eye1,.comment1{
   width:30px;
 }
 
@@ -96,7 +96,7 @@
 
 
 /* Eye 이미지 스타일 */
-img[src="/Eye.png"] {
+img[src="/Eye.png1"] {
   position: relative; /* 또는 absolute */
   width:20px;
   height:20px;
@@ -104,7 +104,7 @@ img[src="/Eye.png"] {
 }
 
 /* Comment 이미지 스타일 */
-img[src="/comment.png"] {
+img[src="/comment.png1"] {
   position: relative; /* 또는 absolute */
   width:20px;
   height:20px;

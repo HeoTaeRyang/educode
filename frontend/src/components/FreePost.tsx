@@ -43,22 +43,23 @@ const FreePost = () => {
   }, [currentPage, sortMethod]);
 
   return (
-    <div className="freepost-container">
-      <div className="freepost-box">
-        <div className="freepost-container-underbox"></div>
-        <img src="/aiask-image.png" alt="aiask" />
+    <div className="free-post-container">
+      <div className="free-box">
+      <img src="/free-image.png" alt="aiask" />
+        <div className="free-container-underbox"></div>
+        
       </div>
       {/* 정렬 버튼 */}
-      <div className="freepost-sort-method">
+      <div className="free-post-sort-array">
         <button
           onClick={() => setSortMethod(0)}
-          className={`sort-button ${sortMethod === 0 ? 'active' : ''}`}
+          className={`free-post-sort-button ${sortMethod === 0 ? 'active' : ''}`}
         >
           최신순
         </button>
         <button
           onClick={() => setSortMethod(1)}
-          className={`sort-button ${sortMethod === 1 ? 'active' : ''}`}
+          className={`free-post-sort-button ${sortMethod === 1 ? 'active' : ''}`}
         >
           조회순
         </button>
@@ -91,7 +92,7 @@ const FreePost = () => {
       </div>
 
       {/* 글 작성 버튼 */}
-      <button className="freepost-write-button">
+      <button className="free-send-button">
         <a href="/free/writing" className="write-button-link">
           글 작성하기
         </a>

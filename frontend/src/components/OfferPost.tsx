@@ -48,8 +48,8 @@ const OfferPost = () => {
   return (
     <div className="offer-post-container">
       <div className="offer-box">
+        <img src="/offer-image.jpg" alt="offer" />
         <div className="offer-container-underbox"></div>
-        <img src="/offer-image.png" alt="offer" />
       </div>
 
       <div className="offer-post-array">

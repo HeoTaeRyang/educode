@@ -14,24 +14,23 @@ interface OfferPostBoxProps {
 
 const OfferPostBox: React.FC<OfferPostBoxProps> = ({ postId, title, header, user, time, views, comments}) => {
   return (
-    <div className="offer-post-box">
-      <div className="offer-post-box-title">
-        <Link to={`/offer/${postId}`} className="offer-post-link">
+    <div className="aiask-post-box">
+      <div className="aiask-post-box-title">
+        <Link to={`/offer/${postId}`} className="aiask-post-link">
           {title}
         </Link>
-        <div className="offer-post-header">{header}</div>
       </div>
-      <div className="offer-post-bottom-box">
-        <div className="offer-post-user">{user}</div>
-        <div className="offer-post-time">{time}</div>
+      <div className="aiask-post-bottom-box">
+        <div className="aiask-post-user">{user}</div>
+        <div className="aiask-post-time">{time}</div>
         <div className="eye">
-          <img src="/Eye.png" alt="offer" />
+          <img src="/Eye.png" alt="aiask" />
         </div>
-        <div className="offer-post-watch">{views}</div>
-        <div className="comment">
-          <img src="/comment.png" alt="offer" />
+        <div className="aiask-post-watch">{views}</div>
+        <div className="eye">
+          <img src="/comment.png" alt="aiask" />
         </div>
-        <div className="offer-post-comment">{comments}</div>
+        <div className="aiask-post-comment">{comments}</div>
       </div>
     </div>
   );
