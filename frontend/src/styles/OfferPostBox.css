@@ -1,6 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
 .offer-post-box {
     margin-bottom: 20px;
     background: #ffffff;
@@ -20,7 +27,7 @@
 .offer-post-box-title {
     color: #000000;
     font-family: "Plus Jakarta Sans", sans-serif;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 500;
     position: relative;
     margin-top:20px;
@@ -40,19 +47,34 @@
   } 
 
 
-.offer-post-bottom-box{
-    margin-top:30px;
+  .offer-post-bottom-box {
+    margin-top: 70px;
     height: 30px;
     position: relative;
-    flex-direction: row;
-    display:flex;
-  }
+    display: flex;
+    align-items: center; /* 수직 중앙 정렬 */
+    justify-content: flex-start; /* 좌측 정렬 (필요시 변경) */
+    border: none; /* border를 none으로 설정 */
+    outline: none; /* outline 제거 */
+}
+
+.offer-post-bottom-box img {
+  width: 100%; /* 이미지의 가로 크기를 부모 요소에 맞게 100%로 설정 */
+  height: 100%; /* 이미지의 세로 크기를 부모 요소에 맞게 100%로 설정 */
+  object-fit: contain; /* 이미지가 부모 박스를 넘지 않도록 크기 조정, 비율 유지 */
+  margin: 0; /* 이미지의 기본 마진 제거 */
+}
+
+.comment{
+  width:25px;
+  height:30px;
+}
 
   .offer-post-user {
     color: #787878;
     text-align: left;
     font-family: "Roboto-Regular", sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 400;
     margin-left:20px;
     position: relative;
@@ -63,50 +85,45 @@
     color: #787878;
     text-align: left;
     font-family: "Roboto-Regular", sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 400;
     position: relative;
-    width:500px
+    width:480px
   }
   .offer-post-watch {
     color: #787878;
     text-align: left;
     font-family: "Roboto-Regular", sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 400;
     position: relative;
-    width:30px
+    width:50px
     
   }
   .offer-post-comment {
     color: #787878;
     text-align: left;
     font-family: "Roboto-Regular", sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 400;
     position: relative;
-    
+    width:30px
   }
 
-.eye,.comment{
+.comment,.eye{
   width:30px;
 }
-
- 
 
 
 /* Eye 이미지 스타일 */
 img[src="/Eye.png"] {
   position: relative; /* 또는 absolute */
-  width:20px;
-  height:20px;
-  
+  width: 20px;
+  height: 20px;
 }
 
-/* Comment 이미지 스타일 */
 img[src="/comment.png"] {
   position: relative; /* 또는 absolute */
-  width:20px;
-  height:20px;
-  
+  width: 20px;
+  height: 20px;
 }

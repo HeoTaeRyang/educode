@@ -26,7 +26,7 @@ const AiaskPostBox: React.FC<AiaskPostBoxProps> = ({ postId, title, user, time, 
           <img src="/Eye.png" alt="aiask" />
         </div>
         <div className="aiask-post-watch">{views}</div>
-        <div className="comment">
+        <div className="eye">
           <img src="/comment.png" alt="aiask" />
         </div>
         <div className="aiask-post-comment">{comments}</div>

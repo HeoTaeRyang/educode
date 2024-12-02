@@ -16,10 +16,9 @@ const OfferPostBox: React.FC<OfferPostBoxProps> = ({ postId, title, header, user
   return (
     <div className="offer-post-box">
       <div className="offer-post-box-title">
-        <Link to={`/offer/${postId}`} className="offer-post-link">
+        <Link to={`/offer/${postId}`} className="aiask-post-link">
           {title}
         </Link>
-        <div className="offer-post-header">{header}</div>
       </div>
       <div className="offer-post-bottom-box">
         <div className="offer-post-user">{user}</div>
@@ -28,7 +27,7 @@ const OfferPostBox: React.FC<OfferPostBoxProps> = ({ postId, title, header, user
           <img src="/Eye.png" alt="offer" />
         </div>
         <div className="offer-post-watch">{views}</div>
-        <div className="comment">
+        <div className="eye">
           <img src="/comment.png" alt="offer" />
         </div>
         <div className="offer-post-comment">{comments}</div>

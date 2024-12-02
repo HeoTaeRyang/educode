@@ -46,8 +46,9 @@ const Aiask: React.FC = () => {
     return (
         <div className="aiask-container">
             <div className="aiask-box">
-                <div className="aiask-container-underbox"></div>    
+            <div className="box-text">AI 질문게시판</div>
                 <img src="/aiask-image.png" alt="aiask" />
+                <div className="aiask-container-underbox"></div>  
             </div>
             <div className="ask-line"></div>
             <div className="ask-title-box">

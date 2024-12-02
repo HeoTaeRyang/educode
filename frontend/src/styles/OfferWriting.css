@@ -15,7 +15,7 @@
     margin:0px;
     border-radius: 0px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: rgb(207, 208, 255);
+    background-color: rgb(255, 255, 255);
     text-align: center;
     width: 100vw;
     height:320px;
@@ -31,7 +31,7 @@
     justify-content: center;  /* 가로 중앙 정렬 */
     align-items: center;      /* 세로 중앙 정렬 */
     height: 20px;             /* 박스의 높이 */
-    background-color: rgb(255, 255, 221); /* 배경 색을 노란색으로 설정 */
+    background-color: rgb(237, 205, 255); /* 배경 색을 노란색으로 설정 */
   }
 
 /* 메인 이미지 아래 선 하나 */
