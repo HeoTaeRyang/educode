@@ -53,8 +53,9 @@ const Offer: React.FC = () => {
     return (
         <div className="offer-container">
             <div className="offer-box">
-                <div className="offer-container-underbox"></div>    
+            <div className="box-text">구인게시판</div>
                 <img src="/offer-image.png" alt="offer" />
+                <div className="offer-container-underbox"></div>   
             </div>
             <div className="offer-line"></div>
             <div className="offer-title-box">

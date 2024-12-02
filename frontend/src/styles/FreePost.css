@@ -15,6 +15,17 @@ html, body, content {
   margin: 0;
 }
 
+
+.free-box {
+  margin:0px;
+  border-radius: 0px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+  width: 100vw;
+  height:320px;
+}
+
 .free-box img {
   /* 이미지 크기를 키움 */
   height: 300px;
@@ -39,15 +50,6 @@ html, body, content {
   margin-top:70px;
 }
 
-.free-box {
-  margin:0px;
-  border-radius: 0px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: rgb(255, 255, 255);
-  text-align: center;
-  width: 100vw;
-  height:320px;
-}
 
 .free-post-list-box{
   display: flex;

@@ -75,22 +75,22 @@ const OfferLook = ({ postId }: { postId: number }) => {
         <div>로딩 중...</div> // 데이터 로딩 중일 때 표시
       ) : (
         <>
-          <div className="aiask-line"></div>
-          <div className="aiask-post-title">{post.title}</div>
-          <div className="aiask-line1"></div>
-          <div className="aiask-post-info">
+          <div className="offer-line"></div>
+          <div className="offer-post-title">{post.title}</div>
+          <div className="offer-line1"></div>
+          <div className="offer-post-info">
             <span>글쓴이 {post.id}</span>
             <span>작성일 {post.datetime}</span>
             <span>조회수 {post.views}</span>
           </div>
           <div className="aiask-line1"></div>
-          <div className="aiask-post-content">{post.content}</div>
+          <div className="offer-post-content">{post.content}</div>
           <div className="aiask-line3"></div>
           <div className="comments-section">
             <div className="comments-title">댓글</div>
             {comments.length > 0 ? (
               comments.map((comment, index) => (
-                <div key={index} className="comment">
+                <div key={index} className="comment-box">
                   <div className="comment-author">{comment.id}</div>
                   <div className="comment-datetime">{comment.datetime}</div>
                   <div className="comment-text">{comment.content}</div>

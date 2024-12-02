@@ -7,7 +7,17 @@
     margin: 0;
   }
   
-
+.box-text{
+  position:absolute;
+  color: #ffffff;
+  text-align: left;
+  font-family: "PlusJakartaSans-Regular", sans-serif;
+  font-size: 80px;
+  font-weight: 400;
+  -webkit-text-stroke: 1px #000000;
+  left:150px;
+  top:280px;
+}
   
   .offer-post-array{
     color: #787878;

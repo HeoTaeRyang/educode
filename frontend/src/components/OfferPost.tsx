@@ -48,7 +48,8 @@ const OfferPost = () => {
   return (
     <div className="offer-post-container">
       <div className="offer-box">
-        <img src="/offer-image.jpg" alt="offer" />
+        <div className="box-text">구인게시판</div>
+        <img src="/offer-image.png" alt="offer" />
         <div className="offer-container-underbox"></div>
       </div>
 

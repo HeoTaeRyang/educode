@@ -34,28 +34,29 @@ const FreeWriting = () => {
   return (
     <div className="free-container">
       <div className="free-box">
+        <div className="box-text">자유게시판</div>
         <img src="/free-image.png" alt="free" />
         <div className="free-container-underbox"></div>
       </div>
-      <div className="ask-line"></div>
+      <div className="free-line"></div>
       <form onSubmit={handleSubmit}>
         {/* 제목 입력란 */}
-        <div className="ask-title-box">
+        <div className="free-title-box">
           <input
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="제목에 핵심 내용을 요약해봐요."
-            className="ask-title-input"
+            className="free-title-input"
             required
           />
         </div>
         {/* 본문 입력란 */}
-        <div className="ask-text-box">
+        <div className="free-text-box">
           <textarea
             value={text} // text로 수정
             onChange={(e) => setText(e.target.value)}
-            className="ask-text-input"
+            className="free-text-input"
             placeholder="내용을 입력하세요"
             required
           />

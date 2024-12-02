@@ -49,6 +49,7 @@ const AiaskPost = () => {
     <div className="aiask-post-container">
       <div className="aiask-box">
         <img src="/aiask-image.png" alt="aiask" />
+        <div className="box-text">AI 질문게시판</div>
         <div className="aiask-container-underbox"></div>
       </div>
 

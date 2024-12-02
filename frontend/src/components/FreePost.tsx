@@ -45,6 +45,7 @@ const FreePost = () => {
   return (
     <div className="free-post-container">
       <div className="free-box">
+      <div className="box-text">자유게시판</div>
       <img src="/free-image.png" alt="aiask" />
         <div className="free-container-underbox"></div>
         
