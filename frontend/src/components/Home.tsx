@@ -73,7 +73,7 @@ const Home: React.FC = () => {
         </div>
       </div>
 
-      <main className="content">
+      <main className="home-con-box">
         <div className="rectangle-23785">
           <p>This is a simple website built with Vite and TypeScript!</p>
         </div>

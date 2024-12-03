@@ -14,31 +14,29 @@ type FreePostBoxProps = {
 
 const FreePostBox: React.FC<FreePostBoxProps> = ({ postId, title, author, date, views, comments, recommends }) => {
   return (
-    <div className="freepost-box">
-      <div className="freepost-box-title">
-        <Link to={`/free/${postId}`} className="freepost-link">
+    <div className="free-post-box">
+      <div className="free-post-box-title">
+        <Link to={`/free/${postId}`} className="free-post-link">
           {title}
         </Link>
       </div>
-      <div className="freepost-box-details">
-        <p>작성자: {author}</p>
-        <p>작성일: {date}</p>
-        <div className="freepost-stats">
-          <div className="freepost-views">
-            <img src="/eye-icon.png" alt="조회수" />
-            <span>{views}</span>
-          </div>
-          <div className="freepost-comments">
-            <img src="/comment-icon.png" alt="댓글 수" />
-            <span>{comments}</span>
-          </div>
-          <div className="freepost-comments">
-            <img src="/comment-icon.png" alt="추천 수" />
-            <span>{comments}</span>
-          </div>
+       <div className="free-post-bottom-box">
+        <div className="free-post-user">{author}</div>
+        <div className="free-post-time">{date}</div>
+        <div className="like">
+          <img src="/like.png" alt="aiask" />
         </div>
-      </div>
-    </div>
+        <div className="free-post-recommends">{recommends}</div>
+        <div className="eye">
+          <img src="/Eye.png" alt="aiask" />
+        </div>
+        <div className="free-post-watch">{views}</div>
+        <div className="eye">
+          <img src="/comment.png" alt="aiask" />
+        </div>
+        <div className="free-post-comment">{comments}</div>
+        </div>
+       </div>
   );
 };
 

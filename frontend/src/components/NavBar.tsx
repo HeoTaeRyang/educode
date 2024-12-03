@@ -21,7 +21,7 @@ const NavBar: React.FC = () => {
           <div className="navbt4"><a href="/quiz">게임</a></div>
         </div>
 
-        
+        {/*
           <div className="register">
             <a href="/register" className="btn-register">Register</a>
           </div>
@@ -35,6 +35,7 @@ const NavBar: React.FC = () => {
           <img className="line-32" src="line-31.svg" alt="Line icon" />
           <img className="sun" src="sun0.svg" alt="Sun icon" />
         </div>
+        */}
       </div>
     </nav>
   );

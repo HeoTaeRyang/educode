@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "../styles/OfferLook.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom"; // React Router 사용
 
 type OfferPost = {
   title: string;
@@ -15,6 +16,7 @@ const OfferLook = ({ postId }: { postId: number }) => {
   const [post, setPost] = useState<OfferPost | null>(null);
   const [comments, setComments] = useState<any[]>([]);
   const [comment, setComment] = useState(''); // 본문 상태
+  const navigate = useNavigate(); // 페이지 이동 함수
 
   const fetchPostData = async () => {
     try {
@@ -59,6 +61,10 @@ const OfferLook = ({ postId }: { postId: number }) => {
       }
   };
 
+  const handleNavigateToList = () => {
+    navigate("/free/post"); // 목록 페이지로 이동
+  };
+
   useEffect(() => {
     fetchPostData();
   }, [postId]);  // postId가 변경될 때마다 데이터 다시 요청
@@ -69,19 +75,22 @@ const OfferLook = ({ postId }: { postId: number }) => {
         <div>로딩 중...</div> // 데이터 로딩 중일 때 표시
       ) : (
         <>
+          <div className="offer-line"></div>
           <div className="offer-post-title">{post.title}</div>
-          <div className="offer-post-header">{post.header}</div>
+          <div className="offer-line1"></div>
           <div className="offer-post-info">
-            <span>글쓴이: {post.id}</span>
-            <span>작성일: {post.datetime}</span>
-            <span>조회수: {post.views}</span>
+            <span>글쓴이 {post.id}</span>
+            <span>작성일 {post.datetime}</span>
+            <span>조회수 {post.views}</span>
           </div>
+          <div className="aiask-line1"></div>
           <div className="offer-post-content">{post.content}</div>
+          <div className="aiask-line3"></div>
           <div className="comments-section">
             <div className="comments-title">댓글</div>
             {comments.length > 0 ? (
               comments.map((comment, index) => (
-                <div key={index} className="comment">
+                <div key={index} className="comment-box">
                   <div className="comment-author">{comment.id}</div>
                   <div className="comment-datetime">{comment.datetime}</div>
                   <div className="comment-text">{comment.content}</div>
@@ -102,6 +111,12 @@ const OfferLook = ({ postId }: { postId: number }) => {
              className="comment-submit-button"
              onClick={handleCommentSubmit}>등록</button>
           </div>
+          <button
+            className="list-button"
+            onClick={handleNavigateToList}
+          >
+            목록
+          </button>
         </>
       )}
     </div>
