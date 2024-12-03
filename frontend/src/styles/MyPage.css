@@ -1,0 +1,72 @@
+/* MyPage 전체 컨테이너 스타일 */
+.mypage-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* 화면 전체 높이 사용 */
+    font-family: Arial, sans-serif;
+}
+
+/* 페이지 제목 스타일 */
+.mypage-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* 폼 그룹과 입력 필드 스타일 */
+.mypage-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 300px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.form-group label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.mypage-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Home 버튼 스타일 */
+.mypage-home-button {
+    margin-top: 20px;
+    padding: 5px 15px;
+    /* 버튼의 상하 패딩은 조금 줄이고 좌우 패딩을 조정하여 글자 길이에 맞게 */
+    font-size: 1rem;
+    background-color: #a3b6cb;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: auto;
+    /* 가로 길이를 내용에 맞게 자동으로 설정 */
+    min-width: 70px;
+    /* 최소 너비 설정 (너무 작아지지 않도록) */
+    max-width: 100px;
+    /* 최대 너비 설정 (너무 커지지 않도록) */
+    transition: background-color 0.3s;
+}
+
+.mypage-home-button:hover {
+    background-color: #ccd9e7;
+}

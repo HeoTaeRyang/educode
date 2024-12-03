@@ -380,8 +380,6 @@ def get_quiz():
     if not db_quiz:
         return jsonify({'error': '해당 언어에 대한 퀴즈가 없습니다.'}), 400
     
-    print(f"Successfully fetched quiz for language '{language}': {db_quiz}") # 테스트
-    
     return jsonify({'quiz': db_quiz}), 200
 
 #출석 기능
@@ -411,6 +409,74 @@ def attendence():
         # 예외 처리: 에러 메시지를 클라이언트에 반환
         return jsonify({'error': str(e)}), 500
 
+# 포인트 랭킹
+@app.route('/pointRanking', methods=['POST'])
+def point_ranking():
+    db_user = user.get_top_point_user()
+    
+    point_ranking = [
+        {'rank': index+1, 'name': db_user[index][0], 'point': db_user[index][1]} for index in range(0,3) 
+    ]
+    
+    return jsonify(point_ranking)
+
+# ai 질문 랭킹
+@app.route('/aiPostRanking', methods=['POST'])
+def ai_post_ranking():
+    db_ai_post = ai_post.get_top_ai_post()
+    
+    ai_post_ranking = [
+        {'rank': index+1, 'name': db_ai_post[index][0]} for index in range(0,3)
+    ]
+    
+    return jsonify(ai_post_ranking)
+
+# 자유 게시판 랭킹
+@app.route('/postRanking', methods=['POST'])
+def post_ranking():
+    db_post = post.get_top_post()
+    
+    post_ranking = [
+        {'rank': index+1, 'name': db_post[index][0]} for index in range(0,3)
+    ]
+    
+    return jsonify(post_ranking)
+
+# 구인 게시판 랭킹
+@app.route('/offerPostRanking', methods=['POST'])
+def offer_post_ranking():
+    db_offer_post = offer_post.get_top_offer_post()
+    
+    offer_post_ranking = [
+        {'rank': index+1, 'name': db_offer_post[index][0]} for index in range(0,3)
+    ]
+    
+    return jsonify(offer_post_ranking)
+
+# 구인 게시판 최신글
+@app.route('/offerPostRecent', methods=['POST'])
+def offer_post_recent():
+    db_offer_post = offer_post.get_recent_offer_post()
+    
+    offer_post_recent = [
+        {'index': index+1, 'title': db_offer_post[index][0], 'name': db_offer_post[index][1], 'content': db_offer_post[index][2]} for index in range(0,3)
+    ]
+    
+    return jsonify(offer_post_recent)
+
+# 마이페이지
+@app.route('/myPage', methods=['POST'])
+def my_page():
+    data = request.get_json()
+    userid = data.get("id")
+    
+    db_user = user.get_user(userid)
+    
+    my_page = [
+        {'id': db_user[0][0], 'name': db_user[0][2], 'point': db_user[0][3]}
+    ]
+    
+    return jsonify(my_page)
     
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
