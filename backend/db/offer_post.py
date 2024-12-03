@@ -61,3 +61,15 @@ def add_views_post(num):
     cursor = con.cursor()
     cursor.execute(f"UPDATE Offer_Post SET View_Count = View_Count + 1 WHERE Number='{num}';")
     con.commit()
+    
+# 상위 조회수 구인 게시글 3개
+def get_top_offer_post():
+    cursor = con.cursor()
+    cursor.execute("SELECT Title FROM Offer_Post ORDER BY View_Count DESC LIMIT 3;")
+    return cursor.fetchall()
+
+# 최신 구인 게시글 3개
+def get_recent_offer_post():
+    cursor = con.cursor()
+    cursor.execute("SELECT Title, Writer_id, Content FROM Offer_Post ORDER BY Datetime DESC LIMIT 3;")
+    return cursor.fetchall()
