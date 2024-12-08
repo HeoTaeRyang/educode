@@ -65,3 +65,8 @@ def get_top_post():
     cursor = con.cursor()
     cursor.execute("SELECT Title FROM Post ORDER BY View_Count DESC LIMIT 3;")
     return cursor.fetchall()
+
+def get_id(num):
+    cursor = con.cursor()
+    cursor.execute(f"SELECT id FROM Post WHERE Number={num};")
+    return cursor.fetchone()[0]

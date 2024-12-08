@@ -202,6 +202,8 @@ def add_recommend():
             res = "이미 추천했습니다."
         else:
             recommend.add_recommend(id,number)
+            writer = post.get_id(number)
+            user.add_point(writer,20)
             res = "추천했습니다"
         
         response = {
